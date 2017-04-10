@@ -47,7 +47,7 @@ License
 -------
 
 We intend to keep this all in the open, and thus all the code in here is licensed
-AGPL, unless stated otherwise. For the full terms, see `LICENSE`.
+AGPL, unless stated otherwise. For the full terms, see [LICENSE](LICENSE).
 
 
 <!-- vim:set syntax=markdown: -->
