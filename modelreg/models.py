@@ -17,10 +17,14 @@ class EncdataMixin(models.Model):
     data_encrypted = models.TextField()
 
     def get_data(self, passkey):
-        return json.load(base64.b64decode(self.data_encrypted))
+        try:
+            return json.load(base64.b64decode(self.data_encrypted))
+        except:
+            return None
 
     def set_data(self, passkey, data):
-        self.data_encrypted = base64.b64encode(json.dumps(data))
+        data_bytes = json.dumps(data).encode('utf-8')
+        self.data_encrypted = base64.b64encode(data_bytes)
 
     class Meta:
         abstract = True

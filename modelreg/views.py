@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render
 
 from . import models
 
+
 def found(req, ident, auth):
     """Decoded QR code handler.
 
@@ -15,4 +16,4 @@ def found(req, ident, auth):
 
     data = code.get_data(auth)
 
-    return render('found.html', data)
+    return render(req, 'found.html', {'public_profile': data})
