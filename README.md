@@ -25,11 +25,10 @@ something happens and give a reasonable alternative to the transponder idea
 that DJI recently proposed (some of the guys in our civil aviation government
 body are playing with that idea as well)
 
-We're explicitly trying to build this as free software, so clubs all over the
-world could run this themselves if they want.
-
-So - what's your take on this? Do you see any obvious flaws or things that we
-would HAVE to include to make this actually useful?
+We're explicitly building this as free software, so clubs all over the world
+could run this themselves if they want. For the same reason, we're not using
+anything too new or fancy, so deployments should be simple and easy, with
+only a few standard django commands.
 
 
 Project status
@@ -60,8 +59,8 @@ look into it). Then, run the following commands to get started:
 After this, you should have a running development version up and running on
 http://localhost:8000
 
-There's some test data dumped in the [_dev](_dev/README.md) directory. Go
-have a look there to get some data to play around with.
+There's some test data dumped in the [_dev](_dev/) directory. Go have a look
+there to get some data to play around with.
 
 Deployment
 ----------
