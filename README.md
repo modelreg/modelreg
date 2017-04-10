@@ -43,6 +43,33 @@ Contributing
 Please talk to Marc Urben or David Vogt if you have an idea. Then the standard
 rules apply: Fork, send a PR/MR, discuss, and we'll be happy to merge.
 
+Development
+-----------
+
+We explicitly don't put up a complex deployment, so everyone with a bit of
+Python knowledge can join in and help (or run the application for themselves).
+
+To get started, install Python (3.5 or newer) and preferrably, create a
+Virtualenv (not really necessary, if you're into development, we suggest you
+look into it). Then, run the following commands to get started:
+
+    pip install -r requirements.txt
+    python manage.py migrate
+    python manage.py runserver
+
+After this, you should have a running development version up and running on
+http://localhost:8000
+
+Deployment
+----------
+
+If you are a club or national body and want to use the software, *please*
+google how to properly deploy a Django application. There's a few more things
+to consider (like using a proper SQL database instead of sqlite3, and using an
+SSL/TLS certificate. The latter is utterly important, as there will be
+person-related information transferred on this application that you may not
+want everybody to see).
+
 License
 -------
 
@@ -50,4 +77,4 @@ We intend to keep this all in the open, and thus all the code in here is license
 AGPL, unless stated otherwise. For the full terms, see [LICENSE](LICENSE).
 
 
-<!-- vim:set syntax=markdown: -->
+<!-- vim:set syntax=markdown tw=76 spelllang=en: -->
