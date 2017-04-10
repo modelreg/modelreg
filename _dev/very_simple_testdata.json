@@ -1,0 +1,18 @@
+[
+{
+    "model": "modelreg.profile",
+    "pk": 1,
+    "fields": {
+        "data_encrypted": "",
+        "user": 1
+    }
+},
+{
+    "model": "modelreg.publicprofile",
+    "pk": 1,
+    "fields": {
+        "data_encrypted": "",
+        "profile": 1
+    }
+}
+]

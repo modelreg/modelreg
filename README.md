@@ -60,6 +60,9 @@ look into it). Then, run the following commands to get started:
 After this, you should have a running development version up and running on
 http://localhost:8000
 
+There's some test data dumped in the [_dev](_dev/README.md) directory. Go
+have a look there to get some data to play around with.
+
 Deployment
 ----------
 
