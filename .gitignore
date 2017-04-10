@@ -3,3 +3,4 @@
 *.pyo
 .*.sw?
 db.sqlite3
+.idea
