@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Model found{% endblock %}
+{% load i18n %}
 
-{% block content %}
-
-# TODO here (found.html):
-<ul>
-    <li>Dump address part from encrypted profile here
-    <li>Show form to notify owner
-</ul>
-<pre>
-{{public_profile}}
-</pre>
+{% block content-main %}
+    <h3>{% trans "RC Model found" %}</h3>
+    {% blocktrans %}
+    It seems you found a RC model and opened the QR code embedded in the image. Below you you have the
+        option to contact the owner of this aircraft.
+    {% endblocktrans %}
+    <input type="email" name="email" />
+    <pre>
+    {{public_profile}}
+    </pre>
 
 {% endblock %}
