@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}ModelREG - {% endblock %}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" href="{% static "adcssy/build/css/adcssy.min.css" %}">
         <link rel="stylesheet" href="{% static "fontawesome/css/font-awesome.min.css" %}">
@@ -36,13 +36,13 @@
                 </ul>
                 <ul class="nav-top-list nav-top-list--right">
                     <li class="nav-top-list-item">
-                        <a href="#">
+                        <a href="{% url "registration_register" %}">
                             <i class="fa fa-envelope"></i>
                             {% trans "Register" %}
                         </a>
                     </li>
                     <li class="nav-top-list-item">
-                        <a href="#">
+                        <a href="{% url "auth_login" %}">
                             <i class="fa fa-power-off"></i>
                             {% trans "Login" %}
                         </a>
@@ -50,8 +50,9 @@
                 </ul>
             </section>
         </nav>
-        <div  class="page">
-            <main class="page-main page-main--scroll" style="background: #bbb">
+        {%block page %}
+        <div class="page">
+            <main class="page-main" style="background: #bbb">
 
             <section class="page-content ">
                 <section class="page-content-main">
@@ -67,5 +68,6 @@
             </section>
             </main>
         </div>
+        {% endblock %}
     </body>
 </html>

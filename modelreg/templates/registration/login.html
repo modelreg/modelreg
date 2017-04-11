@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{block.super}}Login{% endblock %}
+
+{% block content-main %}
+<div class="page-login">
+    <div class="login-form fade-in">
+        <form class="form-inline">
+            <div class="form-group login-form-email">
+                <input type="email" class="form-control" placeholder="{% trans "Email Address" %}" autofocus>
+            </div>
+            <div class="form-group login-form-password">
+                <input type="password" class="form-control" placeholder="{% trans "Password" %}">
+            </div>
+            <button type="submit" class="btn btn-primary">{% trans "Sign in" %}</button>
+        </form>
+        <a
+                                  href="{% url "auth_password_reset" %}"
+                                  class="login-form-password-reset-btn btn btn-link">{% trans "Forgot password?" %}</a>
+    </div>
+</div>
+{% endblock %}
