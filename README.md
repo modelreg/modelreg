@@ -63,6 +63,12 @@ http://localhost:8000
 There's some test data dumped in the [_dev](_dev/) directory. Go have a look
 there to get some data to play around with.
 
+Specification & Plans
+---------------------
+
+The specification and plans are found at [spec/README.md](spec/README.md).
+If you want to help out, see what's missing over there.
+
 Deployment
 ----------
 
