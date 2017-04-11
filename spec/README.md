@@ -4,7 +4,7 @@ Specification
 User Interface
 --------------
 
-We use [http://pencil.evolus.vn/](Pencil) for sketching the user interfaces.
+We use [Pencil](http://pencil.evolus.vn/) for sketching the user interfaces.
 Check out [found_model_page.ep](found_model_page.ep) for our current plans!
 
 TODO
