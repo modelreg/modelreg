@@ -17,3 +17,7 @@ def found(req, ident, auth):
     data = code.get_data(auth)
 
     return render(req, 'found.html', {'public_profile': data})
+
+
+def index(req):
+    return render(req, 'index.html')

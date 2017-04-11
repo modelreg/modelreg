@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     url(r'^f/(?P<ident>[\w\d]+)\.(?P<auth>[\w\d]+)',  views.found),
+    url(r'^$',  views.index),
 ]
