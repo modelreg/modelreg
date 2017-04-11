@@ -52,6 +52,7 @@ To get started, install Python (3.5 or newer) and preferrably, create a
 Virtualenv (not really necessary, if you're into development, we suggest you
 look into it). Then, run the following commands to get started:
 
+    git submodule update --init --recursive
     pip install -r requirements.txt
     python manage.py migrate
     python manage.py runserver
