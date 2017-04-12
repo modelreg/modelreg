@@ -55,6 +55,7 @@ look into it). Then, run the following commands to get started:
     git submodule update --init --recursive
     pip install -r requirements.txt
     python manage.py migrate
+    python manage.py createsuperuser
     python manage.py runserver
 
 After this, you should have a running development version up and running on
