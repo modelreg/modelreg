@@ -27,8 +27,8 @@ class PublicProfile(models.Model):
 
     user        = models.OneToOneField(User, related_name='public_profile')
     public_info = models.TextField()
-    identifier  = models.CharField(max_length=10, default=make_identifier)
-    auth        = models.CharField(max_length=10, default=make_identifier)
+    identifier  = models.CharField(max_length=10, default=make_identifier, blank=True)
+    auth        = models.CharField(max_length=10, default=make_identifier, blank=True)
 
     class Meta:
         indexes = [
@@ -47,7 +47,7 @@ class Case(models.Model):
     damage_type  = models.CharField(max_length=20, choices=TYPE_CHOICES, default='no_damage')
 
     model_owner    = models.ForeignKey(User, related_name='cases')
-    identifier     = models.CharField(max_length=10, default=make_identifier)
+    identifier     = models.CharField(max_length=10, default=make_identifier, blank=True)
     timestamp      = models.DateTimeField(auto_now_add=True)
 
     reporter_email = models.EmailField()

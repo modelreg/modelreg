@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='publicprofile',
             name='auth',
-            field=models.CharField(default=modelreg.models.make_identifier, max_length=10),
+            field=models.CharField(default='', max_length=10, blank=True),
         ),
         migrations.AlterField(
             model_name='publicprofile',
