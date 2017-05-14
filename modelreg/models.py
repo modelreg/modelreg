@@ -2,6 +2,7 @@
 
 """Documentation about the module... may be multi-line"""
 
+from django.utils.translation import ugettext_lazy as _
 from random import SystemRandom
 import string
 import json
@@ -18,7 +19,7 @@ class Profile(models.Model):
 
 
 def make_identifier(length=15):
-    letters = string.ascii_letters + string.digits
+    letters = string.ascii_letters + string.digits + string.ascii_lowercase
     return ''.join(SystemRandom().choice(letters) for _ in range(length))
 
 
@@ -33,3 +34,39 @@ class PublicProfile(models.Model):
         indexes = [
             models.Index(fields=['identifier', 'auth']),
         ]
+
+
+class Case(models.Model):
+
+    TYPE_CHOICES = (
+        ('no_damage', _('No Damage')),
+        ('property_damage', _('Property Damage')),
+        ('injury', _('Injury')),
+    )
+
+    damage_type  = models.CharField(max_length=20, choices=TYPE_CHOICES, default='no_damage')
+
+    model_owner    = models.ForeignKey(User, related_name='cases')
+    identifier     = models.CharField(max_length=10, default=make_identifier)
+    timestamp      = models.DateTimeField(auto_now_add=True)
+
+    reporter_email = models.EmailField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['identifier']),
+        ]
+
+
+class CaseMessage(models.Model):
+
+    case       = models.ForeignKey(Case, related_name = 'messages')
+    timestamp  = models.DateTimeField(auto_now_add=True)
+    from_owner = models.BooleanField()
+    message    = models.TextField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['timestamp']),
+        ]
+

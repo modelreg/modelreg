@@ -1,0 +1,22 @@
+
+.case-message {
+    width: 80%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.case-message.finder::after {
+    font-family: FontAwesome;
+    content: "\f007";
+
+}
+
+.case-message.owner::before {
+    font-family: FontAwesome;
+    content: "\f1d8";
+}
+
+.card-title .timestamp {
+    font-size: 0.7em;
+    font-weight: normal;
+}

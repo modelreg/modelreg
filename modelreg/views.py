@@ -3,7 +3,7 @@
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.sites.shortcuts import get_current_site
 
 import qrcode
@@ -24,11 +24,86 @@ def found(req, ident, auth):
     decrypt via "auth" tag.
     """
 
-    code = get_object_or_404(models.PublicProfile, pk=int(ident, 36))
+    # TODO: Rate limit requests to this page on a per-client-IP base.
+    # We don't want someone to walk across an event for example and
+    # scanning all the models.
+    # Also, once a request is submitted for a given public profile,
+    # we want a rate limit there as well - it's very unlikely that
+    # the same owner loses multiple models within a short period of
+    # time. The exact values need to be determined in the future.
 
-    data = code.get_data(auth)
+    code = get_object_or_404(models.PublicProfile, identifier=ident)
 
-    return render(req, 'found.html', {'public_profile': data})
+    if req.POST:
+        if req.POST['finder_email'] != req.POST['finder_email2']:
+            # TODO: notify user - email must be confirmed
+            pass
+
+        case = models.Case()
+        case.model_owner = code.user
+        case.reporter_email = req.POST['finder_email']
+        case.damage_type    = req.POST['damage_type']
+
+        case.save()
+
+        if req.POST['message']:
+            msg = models.CaseMessage()
+            msg.case = case
+            msg.from_owner = True
+            msg.message = req.POST['message']
+
+            msg.save()
+
+        return redirect('case_finder', ident=case.identifier)
+
+    return render(req, 'found.html', {'public_profile': code})
+
+def case_info(case):
+    "Return a dict suitable for the case_* views as rendering context"
+
+    messages = case.messages.order_by('timestamp')
+    public_profile = case.model_owner.public_profile
+
+    return {
+        'case': case,
+        'messages': messages,
+        'public_profile': public_profile
+    }
+
+
+def case_finder(req, ident):
+    case = models.Case.objects.get(identifier=ident)
+
+    if not case.model_owner == req.user:
+        # TODO: reject request; owner view does not match
+        # current user
+        pass
+
+    if req.POST and req.POST['message']:
+        msg = models.CaseMessage()
+        msg.case = case
+        msg.from_owner = False
+        msg.message = req.POST['message']
+        msg.save()
+
+    return render(req, 'case_finder.html', case_info(case))
+
+
+def case_owner(req, pk):
+    case = models.Case.objects.get(pk=pk)
+    if not case.model_owner == req.user:
+        # TODO: reject request; owner view does not match
+        # current user
+        pass
+
+    if req.POST and req.POST['message']:
+        msg = models.CaseMessage()
+        msg.case = case
+        msg.from_owner = True
+        msg.message = req.POST['message']
+        msg.save()
+
+    return render(req, 'case_owner.html', case_info(case))
 
 
 def index(req):
@@ -60,9 +135,19 @@ def profile(req):
         {
             'user': req.user,
             'profile': profile,
-            'public_profile': pprof
+            'public_profile': pprof,
+            'profile_url': profile_url(pprof, req)
         }
     )
+
+def profile_url(pprof, req):
+    url = reverse('found', kwargs={'ident': pprof.identifier, 'auth':pprof.auth})
+
+    proto = 'https' if req.is_secure() else 'http'
+
+    domain = get_current_site(req)
+
+    return '%s://%s%s' % (proto, domain, url)
 
 @login_required
 def profile_qrcode_img(req):
@@ -73,16 +158,10 @@ def profile_qrcode_img(req):
     response = HttpResponse(content_type="image/png")
 
     qr = qrcode.QRCode(
-        error_correction=qrcode.constants.ERROR_CORRECT_L
+        error_correction=qrcode.constants.ERROR_CORRECT_M
     )
 
-    url = reverse('found', kwargs={'ident': pprof.identifier, 'auth':pprof.auth})
-
-    proto = 'https' if req.is_secure() else 'http'
-
-    domain = get_current_site(req)
-
-    qr.add_data('%s://%s%s' % (proto, domain, url))
+    qr.add_data(profile_url(pprof, req))
 
     qr.make(fit=True)
 

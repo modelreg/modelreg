@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Model found{% endblock %}
+{% load i18n %}
+
+{% block content-main %}
+<h3>{% trans "Case Type: " %}{{case.damage_type}}</h3>
+<div class="card card--inverse">
+    <div class="card-block">
+        <p class="card-text">{{public_profile.public_info|linebreaksbr}}</p>
+    </div>
+</div>
+<div class="grid grid--row">
+    {% for msg in messages %}
+
+    <div class="card case-message {% if msg.from_owner %}owner{%else%}finder{%endif%}">
+        <div class="card-block">
+            <h4 class="card-title">{% if msg.from_owner %}{% trans 'You' %}{%else%}{% trans 'Finder' %}{%endif%}
+                <span class="timestamp">{{msg.timestamp}}</span>
+            </h4>
+        </div>
+        <div class="card-block">
+            <p class="card-text">{{msg.message|linebreaksbr}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="grid-cell">
+
+</div>
+
+<div class="grid grid--row">
+    <div class="grid-cell">
+        <form method="POST">
+            {%csrf_token%}
+            <div class="form-group">
+
+                <textarea placeholder="{% trans "What would you like to tell the rc model owner?" %}"
+                          cols="50"
+                          name="message"
+                          rows="2"></textarea>
+
+                <button type="submit" class="btn btn-default">{% trans "Send message" %}</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

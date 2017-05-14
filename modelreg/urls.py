@@ -24,6 +24,9 @@ urlpatterns = [
     url(r'^profile/qrcode.png',  views.profile_qrcode_img, name='profile_code'),
     url(r'^profile/edit',        views.profile, name='profile'),
 
+    url(r'^c/(?P<ident>[\w\d]+)', views.case_finder, name='case_finder'),
+    url(r'^oc/(?P<pk>\d+)',  views.case_owner, name='case_owner'),
+
     url(r'^f/(?P<ident>[\w\d]+)\.(?P<auth>[\w\d]+)',  views.found, name='found'),
     url(r'^found/',  views.found_info, name='found_info'),
     url(r'^$',  views.index),

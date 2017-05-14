@@ -26,7 +26,19 @@
                     <input type="submit">
                 </div>
 
+                <a href="{{profile_url}}">
                 <img src="{% url 'profile_code' %}">
+                </a>
+
+                <h3>
+                <ul>
+                {% for case in profile.user.cases.all %}
+                <li><a href="{% url 'case_owner' case.pk %}">{{case.timestamp}}</a>
+                {% empty %}
+                You never had a model reported here.
+                {% endfor %}
+                </ul>
+
 
             </form>
         </div>
