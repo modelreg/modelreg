@@ -1,0 +1,13 @@
+
+ohai
+
+goto here:
+
+you need dis key: {{activation_key}}
+
+expires in {{expiration_days}}
+
+dis is teh user: {{user}}
+
+{{site.domain}}
+
