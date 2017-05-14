@@ -11,3 +11,8 @@ dis is teh user: {{user}}
 
 {{site.domain}}
 
+{% if request.is_secure %}
+url for activation: https://{{site.domain}}{% url 'registration_activate' activation_key %}
+{% else %}
+url for activation: http://{{site.domain}}{% url 'registration_activate' activation_key %}
+{% endif %}

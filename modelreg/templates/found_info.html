@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Model found{% endblock %}
+{% load i18n %}
+
+{% block content-main %}
+    <h3>{% trans "RC Model found" %}</h3>
+    <div class="grid grid--row">
+        <div class="grid-cell">
+            {% blocktrans %}
+            If you found a model, please scan the QR code on your mobile
+            phone to contact the owner.
+
+            (TODO: Insert Picture...)
+            {% endblocktrans %}
+        </div>
+    </div>
+{% endblock %}

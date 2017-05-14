@@ -21,7 +21,10 @@ from . import views
 urlpatterns = [
     url(r'^admin/',    admin.site.urls),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
+    url(r'^profile/qrcode.png',  views.profile_qrcode_img, name='profile_code'),
+    url(r'^profile/edit',        views.profile, name='profile'),
 
-    url(r'^f/(?P<ident>[\w\d]+)\.(?P<auth>[\w\d]+)',  views.found),
+    url(r'^f/(?P<ident>[\w\d]+)\.(?P<auth>[\w\d]+)',  views.found, name='found'),
+    url(r'^found/',  views.found_info, name='found_info'),
     url(r'^$',  views.index),
 ]

@@ -23,7 +23,7 @@
             <section class="nav-top-body">
                 <ul class="nav-top-list">
                     <li class="nav-top-list-item">
-                        <a href="#">
+                        <a href="{% url 'found_info' %}">
                             <i class="fa fa-power-off"></i>
                             {% trans "Found an airplane, drone, multicopter?" %}
                         </a>
@@ -35,20 +35,7 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="nav-top-list nav-top-list--right">
-                    <li class="nav-top-list-item">
-                        <a href="{% url "registration_register" %}">
-                            <i class="fa fa-envelope"></i>
-                            {% trans "Register" %}
-                        </a>
-                    </li>
-                    <li class="nav-top-list-item">
-                        <a href="{% url "auth_login" %}">
-                            <i class="fa fa-power-off"></i>
-                            {% trans "Login" %}
-                        </a>
-                    </li>
-                </ul>
+                {% include 'personal_nav.html' %}
             </section>
         </nav>
         {%block page %}

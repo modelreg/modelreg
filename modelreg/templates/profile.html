@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% load i18n %}
+
+{% block content-main %}
+    <h3>{% trans "Edit your profile" %}</h3>
+    <div class="grid grid--row">
+        <div class="grid-cell">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="address" name="address">{% trans "Address" %}</label>
+                    <textarea id="address" name="address" type="text">{{profile.address}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="phone" name="phone">{% trans "Phone" %}</label>
+                    <input id="phone" name="phone" type="text" value="{{profile.phone}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="public_info" name="public_info">{% trans "Public Info" %}</label>
+                    <textarea id="public_info" name="public_info" >{{public_profile.public_info}}</textarea>
+                    {%blocktrans%}This will be shown to the finder of your model{%endblocktrans%}
+                </div>
+                <div class="form-group">
+                    <input type="submit">
+                </div>
+
+                <img src="{% url 'profile_code' %}">
+
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}
