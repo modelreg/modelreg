@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             name='Case',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('identifier', models.CharField(default=modelreg.models.make_identifier, max_length=10)),
+                ('identifier', models.CharField(default='', max_length=10)),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
                 ('reporter_email', models.EmailField(max_length=254)),
                 ('model_owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cases', to=settings.AUTH_USER_MODEL)),
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='publicprofile',
             name='identifier',
-            field=models.CharField(default=modelreg.models.make_identifier, max_length=10),
+            field=models.CharField(default='', max_length=10),
         ),
         migrations.AddIndex(
             model_name='casemessage',
