@@ -80,6 +80,27 @@ SSL/TLS certificate. The latter is utterly important, as there will be
 person-related information transferred on this application that you may not
 want everybody to see).
 
+ToDo
+----
+
+* Surround the QR-Code with the words "found?" and the translation to the user
+  language, so the finder knows to scan the code
+* Use DJango versioning for the fields address and qr-code
+  * QR-Code so that all old QR-Codes can be matched to the user
+  * Address, so that the admin can access the verified address and history
+* QR-Code rate limiting (the user can only create one new QR-Code per day)
+* QR-Code caching to not calculate it every time from scratch
+* Validate postal address, during testing and development, send the validation
+  code via email
+* OAuth support
+* Postal address add verified field
+* Send a reminder (to finder and user) email (and finally close the case) if no
+  messages where exchanged for some time.
+* Obvious:
+  * Translations
+  * Make it pretty
+  * Create unit tests
+
 License
 -------
 
