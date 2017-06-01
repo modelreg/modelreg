@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.sites.shortcuts import get_current_site
@@ -178,6 +178,12 @@ def system_update(req):
     import uwsgi
     import git
     from django.core.management import call_command
+
+    if req.POST['ref'] != 'refs/heads/master':
+        response = HttpResponseBadRequest()
+        response.write("Not master branch, not updating")
+        return response
+
 
     git_cmd = git.cmd.Git(settings.BASE_DIR)
     git_cmd.pull()
