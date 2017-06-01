@@ -19,10 +19,13 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    url(r'^system/update', views.system_update),
+
     url(r'^admin/',    admin.site.urls),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^profile/qrcode.png',  views.profile_qrcode_img, name='profile_code'),
     url(r'^profile/edit',        views.profile, name='profile'),
+
 
     url(r'^c/(?P<ident>[\w\d]+)', views.case_finder, name='case_finder'),
     url(r'^oc/(?P<pk>\d+)',  views.case_owner, name='case_owner'),
