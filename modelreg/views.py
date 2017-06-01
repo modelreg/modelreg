@@ -185,3 +185,4 @@ def system_update(req):
     call_command('migrate')
 
     uwsgi.reload()
+    return render(req, 'system_update.html')
