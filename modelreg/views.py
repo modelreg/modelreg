@@ -173,7 +173,6 @@ def profile_qrcode_img(req):
     return response
 
 
-@login_required
 def system_update(req):
     import uwsgi
     import git
