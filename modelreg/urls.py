@@ -16,12 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from django.conf.settings import UPDATE_KEY
+from django.conf import settings
 
 from . import views
 
 urlpatterns = [
-    url(r'^system/update/%s' % UPDATE_KEY, views.system_update),
+    url(r'^system/update/%s' % settings.UPDATE_KEY, views.system_update),
 
     url(r'^admin/',    admin.site.urls),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
