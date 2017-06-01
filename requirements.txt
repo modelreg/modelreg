@@ -2,3 +2,5 @@ django
 django-registration
 qrcode
 pillow
+uwsgi
+

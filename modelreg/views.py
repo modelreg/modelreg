@@ -171,6 +171,7 @@ def profile_qrcode_img(req):
     return response
 
 def cmd_or_die(*cmd):
+    import subprocess
     status, out = subprocess.getstatusoutput(list(cmd))
     if status != 0:
         raise RuntimeError("Command failed: %s" % " ".join(cmd))
@@ -179,7 +180,6 @@ def cmd_or_die(*cmd):
 @login_required
 def system_update(req):
 
-    import subprocess
 
     data = [
         cmd_or_die('git', 'fetch'),
