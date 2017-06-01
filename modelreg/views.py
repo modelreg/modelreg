@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.sites.shortcuts import get_current_site
 
+from django.conf import settings
+
 import qrcode
 
 from . import models
@@ -170,21 +172,16 @@ def profile_qrcode_img(req):
     img.save(response, 'png')
     return response
 
-def cmd_or_die(*cmd):
-    import subprocess
-    status, out = subprocess.getstatusoutput(list(cmd))
-    if status != 0:
-        raise RuntimeError("Command failed: %s" % " ".join(cmd))
-    return out
 
 @login_required
 def system_update(req):
-
-
-    data = [
-        cmd_or_die('git', 'fetch'),
-        cmd_or_die('git', 'reset', '--hard', 'origin/production'),
-        cmd_or_die('manage.py', 'migrate')
-    ]
     import uwsgi
+    import git
+    from django.core.management import call_command
+
+    git_cmd = git.cmd.Git(settings.BASE_DIR)
+    git_cmd.pull()
+
+    call_command('migrate')
+
     uwsgi.reload()

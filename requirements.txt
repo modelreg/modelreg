@@ -3,4 +3,4 @@ django-registration
 qrcode
 pillow
 uwsgi
-
+git
