@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Model found{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "RC Model found" %} - {% trans "Case Type: " %}{{case.damage_type}}{% endblock %}
+{% block content-header %}{% trans "RC Model found" %} - {% trans "Case Type: " %}{{case.damage_type}}{% endblock %}
 {% block content-main %}
-<h3>{% trans "Case Type: " %}{{case.damage_type}}</h3>
 <div class="card card--inverse">
     <div class="card-block">
         <p class="card-text">{{public_profile.public_info|linebreaksbr}}</p>

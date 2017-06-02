@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Profile{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "Edit your profile" %}{% endblock %}
+{% block content-header %}{% trans "Edit your profile" %}{% endblock %}
 {% block content-main %}
-    <h3>{% trans "Edit your profile" %}</h3>
     <div class="grid grid--row">
         <div class="grid-cell">
             <form method="POST">

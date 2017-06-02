@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
-
-{% block title %}{{block.super}}Register{% endblock %}
-
-
+{% block title %}{{block.super}}{% trans "Activation complete" %}{% endblock %}
+{% block content-header %}{% trans "Activation complete" %}{% endblock %}
 {% block content-main %}
-Well done, thanks!
+    {% blocktrans %}
+    Well done, thanks!
+    {% endblocktrans %}
 {% endblock %}
 

@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Model found{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "RC Model found" %}{% endblock %}
+{% block content-header %}{% trans "RC Model found" %}{% endblock %}
 {% block content-main %}
-    <h3>{% trans "RC Model found" %}</h3>
     <div class="grid grid--row">
         <div class="grid-cell">
             {% blocktrans %}

@@ -1,7 +1,7 @@
 {% extends "messaging_base.html" %}
-{% block title %}Admin messaging{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "Admin messaging" %}{% endblock %}
+{% block content-header %}{% trans "Admin messaging" %}{% endblock %}
 {% block messaging_options %}
     <h4>Owner information</h4>
     {{ owner_profile }}

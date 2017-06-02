@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "Welcome to ModelReg" %}{% endblock %}
+{% block content-header %}{% trans "Welcome to ModelReg" %}{% endblock %}
 {% block content-main %}
-    <h3>{% trans "Welcome to ModelReg" %}</h3>
     {% blocktrans %}
     This site is a service to register RC model pilots and let you contact them if a model is lost.
     {% endblocktrans %}
@@ -11,6 +10,6 @@
     <h3>{% trans "How it works" %}</h3>
     {% blocktrans %}
     Registered pilots which verified their address via letter, receive a
-    <a href="https://en.wikipedia.org/wiki/QR_code" target="_blank>"QR-Code</a>
+    <a href="https://en.wikipedia.org/wiki/QR_code" target="_blank">QR-Code</a>
     {% endblocktrans %}
 {% endblock %}

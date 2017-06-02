@@ -1,7 +1,7 @@
 {% extends "messaging_base.html" %}
-{% block title %}Finder messaging{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "Finder messaging" %}{% endblock %}
+{% block content-header %}{% trans "Finder messaging" %}{% endblock %}
 {% block messaging_options %}
     {% blocktrans %}
         You can talk to the model's owner right on

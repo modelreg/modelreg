@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
-
-{% block title %}{{block.super}}Logout{% endblock %}
-
-
+{% block title %}{{block.super}}{% trans "Logout" %}{% endblock %}
+{% block content-header %}{% trans "Logout" %}{% endblock %}
 {% block content-main %}
-{% blocktrans %}
-Thanks for visiting. You're now logged out. See you soon!
-{% endblocktrans %}
+    {% blocktrans %}
+    Thanks for visiting. You're now logged out. See you soon!
+    {% endblocktrans %}
 {% endblock %}
 

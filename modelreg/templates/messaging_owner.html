@@ -1,7 +1,7 @@
 {% extends "messaging_base.html" %}
-{% block title %}Owner messaging{% endblock %}
 {% load i18n %}
-
+{% block title %}{{block.super}}{% trans "Owner messaging" %}{% endblock %}
+{% block content-header %}{% trans "Owner messaging" %}{% endblock %}
 {% block messaging_options %}
     {% blocktrans %}
         You can talk to the finder right on
