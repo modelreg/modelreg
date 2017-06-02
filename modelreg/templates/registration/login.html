@@ -1,24 +1,27 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{{block.super}}{% trans "Login" %}{% endblock %}
+{% block title %}{{ block.super }}{% trans "Login" %}{% endblock %}
 {% block content-header %}{% trans "Login" %}{% endblock %}
 {% block content-main %}
-<div class="page-login">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="form-group login-form-email" style="padding-left: 2.5rem;">
-                {{form.username}}
-                {{form.username.errors}}
-            </div>
-            <div class="form-group login-form-password" style="padding-left: 2.5rem;">
-                {{form.password}}
-                {{form.password.errors}}
-            </div>
-            <button type="submit" class="btn btn-primary">{% trans "Sign in" %}</button>
-        </form>
-        {{form.non_field_errors}}
-        <a
-          href="{% url "auth_password_reset" %}"
-          class="login-form-password-reset-btn btn btn-link">{% trans "Forgot password?" %}</a>
-</div>
+    <div class="page-login">
+        <div class="login-form fade-in">
+
+            <form method="POST" class="form-inline">
+                {% csrf_token %}
+                <div class="form-group login-form-email" style="padding-left: 2.5rem;">
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+                <div class="form-group login-form-password" style="padding-left: 2.5rem;">
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                </div>
+                <button type="submit" class="btn btn-primary">{% trans "Sign in" %}</button>
+            </form>
+            {{ form.non_field_errors }}
+            <a
+                    href="{% url "auth_password_reset" %}"
+                    class="login-form-password-reset-btn btn btn-link">{% trans "Forgot password?" %}</a>
+        </div>
+    </div>
 {% endblock %}
