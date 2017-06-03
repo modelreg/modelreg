@@ -8,17 +8,21 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="address" name="address">{% trans "Address" %}</label>
-                    <textarea id="address" name="address" type="text">{{ profile.address }}</textarea>
+                    <label for="address">{% trans "Address" %}</label>
+                    <textarea id="address" name="address" type="text" class="form-control">
+                        {{ profile.address }}
+                    </textarea>
                 </div>
                 <div class="form-group">
-                    <label for="phone" name="phone">{% trans "Phone" %}</label>
-                    <input id="phone" name="phone" type="text" value="{{ profile.phone }}">
+                    <label for="phone">{% trans "Phone" %}</label>
+                    <input id="phone" name="phone" type="text" value="{{ profile.phone }}" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="public_info" name="public_info">{% trans "Public Info" %}</label>
-                    <textarea id="public_info" name="public_info">{{ public_profile.public_info }}</textarea><br/>
+                    <label for="public_info">{% trans "Public Info" %}</label>
+                    <textarea id="public_info" name="public_info" class="form-control">
+                        {{ public_profile.public_info }}
+                    </textarea><br/>
                     {% blocktrans %}This will be shown to the finder of your model{% endblocktrans %}
                 </div>
                 <div class="form-group">
@@ -28,8 +32,8 @@
         </div>
         <div class="grid-cell">
             <a href="{{ profile_url }}">
-                <h4>{% trans "This is your QR-Code" %}</h4>
-                <img src="{% url 'profile_code' %}">
+                <img src="{% url 'profile_code' %}"><br />
+                {% trans "This is your QR-Code" %}
             </a>
         </div>
     </div>
