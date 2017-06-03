@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.sites.shortcuts import get_current_site
+from django.views.decorators.csrf import csrf_exempt
 
 from django.conf import settings
 
@@ -173,6 +174,7 @@ def profile_qrcode_img(req):
     return response
 
 
+@csrf_exempt
 def system_update(req):
     import uwsgi
     import git
