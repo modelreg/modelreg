@@ -182,10 +182,10 @@ def system_update(req):
     from django.core.management import call_command
 
     # This does not work properly yet, so disabling the code for now
-    if req.POST['ref'] != 'refs/heads/master':
-        response = HttpResponseBadRequest()
-        response.write("Not master branch, not updating")
-        return response
+    # if req.POST['ref'] != 'refs/heads/master':
+    #     response = HttpResponseBadRequest()
+    #     response.write("Not master branch, not updating")
+    #     return response
 
 
     git_cmd = git.cmd.Git(settings.BASE_DIR)
