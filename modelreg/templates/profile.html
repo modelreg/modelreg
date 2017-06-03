@@ -28,10 +28,8 @@
         </div>
         <div class="grid-cell">
             <a href="{{ profile_url }}">
-                {% blocktrans %}
-                    This is your QR-Code:
-                {% endblocktrans %}
-                <br /><img src="{% url 'profile_code' %}">
+                <img src="{% url 'profile_code' %}"><br/>
+                {% trans "This is your QR-Code" %}
             </a>
         </div>
     </div>
