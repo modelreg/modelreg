@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }}{% trans "Edit your profile" %}{% endblock %}
 {% block content-header %}{% trans "Edit your profile" %}{% endblock %}
 {% block content-main %}
-    <div class="grid grid--row">
+    <div class="grid grid">
         <div class="grid-cell">
             <form method="POST">
                 {% csrf_token %}
@@ -28,8 +28,8 @@
         </div>
         <div class="grid-cell">
             <a href="{{ profile_url }}">
-                <img src="{% url 'profile_code' %}"><br/>
-                {% trans "This is your QR-Code" %}
+                <h4>{% trans "This is your QR-Code" %}</h4>
+                <img src="{% url 'profile_code' %}">
             </a>
         </div>
     </div>

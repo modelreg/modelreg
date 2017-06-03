@@ -161,7 +161,8 @@ def profile_qrcode_img(req):
     response = HttpResponse(content_type="image/png")
 
     qr = qrcode.QRCode(
-        error_correction=qrcode.constants.ERROR_CORRECT_M
+        error_correction=qrcode.constants.ERROR_CORRECT_M,
+        border=0,
     )
 
     qr.add_data(profile_url(pprof, req))
@@ -181,10 +182,10 @@ def system_update(req):
     from django.core.management import call_command
 
     # This does not work properly yet, so disabling the code for now
-    #if req.POST['ref'] != 'refs/heads/master':
-    #    response = HttpResponseBadRequest()
-    #    response.write("Not master branch, not updating")
-    #    return response
+    if req.POST['ref'] != 'refs/heads/master':
+        response = HttpResponseBadRequest()
+        response.write("Not master branch, not updating")
+        return response
 
 
     git_cmd = git.cmd.Git(settings.BASE_DIR)
