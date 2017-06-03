@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }}{% trans "Edit your profile" %}{% endblock %}
 {% block content-header %}{% trans "Edit your profile" %}{% endblock %}
 {% block content-main %}
-    <div class="grid grid">
+    <div class="grid">
         <div class="grid-cell">
             <form method="POST">
                 {% csrf_token %}
@@ -37,13 +37,17 @@
             </a>
         </div>
     </div>
-    <h3>
-    <ul>
-        {% for case in profile.user.cases.all %}
-            <li><a href="{% url 'case_owner' case.pk %}">{{ case.timestamp }}</a>
-        {% empty %}
-            You never had a model reported here.
-        {% endfor %}
-    </ul>
-    </h3>
+    <div class="grid">
+        <div class="grid-cell">
+            <h3>
+                <ul>
+                    {% for case in profile.user.cases.all %}
+                        <li><a href="{% url 'case_owner' case.pk %}">{{ case.timestamp }}</a>
+                    {% empty %}
+                        You never had a model reported here.
+                    {% endfor %}
+                </ul>
+            </h3>
+        </div>
+    </div>
 {% endblock %}

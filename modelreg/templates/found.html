@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }}{% trans "RC Model found" %}{% endblock %}
 {% block content-header %}{% trans "RC Model found" %}{% endblock %}
 {% block content-main %}
-    <div class="grid grid">
+    <div class="grid">
         <div class="grid-cell">
             <form method="POST">
                 {% csrf_token %}
@@ -39,36 +39,40 @@
         <div class="grid-cell">
             <div class="card card--inverse">
                 <div class="card-block">
-                    <h3 class="card-title">{% trans "So you found an RC model? Here's some words from the owner" %}</h3>
+                    <h4 class="card-title">{% trans "Here's some words from the owner" %}</h4>
                     <p class="card-text">{{ public_profile.public_info|linebreaksbr }}</p>
                 </div>
             </div>
         </div>
     </div>
+    <div class="grid">
+        <div class="grid-cell">
 
-    <p>
-        {% blocktrans %}
-            Note: You will receive an email with further information once you submit this form.
-            There, you may talk to the owner further, or escalate the case to the administrators
-            of this site if the owner does not comply with your request.
-        {% endblocktrans %}
-    </p>
-    <p>
-        {% blocktrans %}
-            You can send a message to the owner
-            here. Please select whether the model
-            has caused any damage (personal,
-            property, or otherwise) in the menu.
-sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-            Let them know that you have their model,
-            and they will be able to respond.
+            <p>
+                {% blocktrans %}
+                    Note: You will receive an email with further information once you submit this form.
+                    There, you may talk to the owner further, or escalate the case to the administrators
+                    of this site if the owner does not comply with your request.
+                {% endblocktrans %}
+            </p>
+            <p>
+                {% blocktrans %}
+                    You can send a message to the owner
+                    here. Please select whether the model
+                    has caused any damage (personal,
+                    property, or otherwise) in the menu.
+                    sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                    Let them know that you have their model,
+                    and they will be able to respond.
 
-            We will send you an email so you can
-            get back to this if there are any
-            problems - for example if the owner
-            does not respond or you can't agree
-            with them over damages or other
-            issues.
-        {% endblocktrans %}
-    </p>
+                    We will send you an email so you can
+                    get back to this if there are any
+                    problems - for example if the owner
+                    does not respond or you can't agree
+                    with them over damages or other
+                    issues.
+                {% endblocktrans %}
+            </p>
+        </div>
+    </div>
 {% endblock %}
