@@ -11,26 +11,25 @@
 
                     <div class="radio">
                         <input id="no_damage" name="damage_type" type="radio">
-                        <label for="no_damage" name="damage_type">{% trans "No damage" %}</label>
+                        <label for="no_damage">{% trans "No damage" %}</label>
 
                         <input id="property_damage" name="damage_type" type="radio">
-                        <label for="property_damage" name="damage_type">{% trans "Property damage" %}</label>
+                        <label for="property_damage">{% trans "Property damage" %}</label>
 
                         <input id="injury" name="damage_type" type="radio">
-                        <label for="injury" name="damage_type">{% trans "Injury" %}</label>
+                        <label for="injury">{% trans "Injury" %}</label>
                     </div>
 
                     <textarea placeholder="{% trans "What would you like to tell the rc model owner?" %}"
                               cols="50"
                               name="message"
-                              rows="2"></textarea>
+                              rows="2" class="form-control"></textarea>
 
                     <input type="email" class="form-control" name="finder_email"
                            placeholder="{% trans "Enter email address" %}">
 
                     <input type="email2" class="form-control" name="finder_email2"
                            placeholder="{% trans "Confirm email address" %}">
-
 
                     <button type="submit" class="btn btn-default">{% trans "Send message" %}</button>
                 </div>
