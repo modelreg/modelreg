@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{{block.super}}{% trans "Edit your profile" %}{% endblock %}
+{% block title %}{{ block.super }}{% trans "Edit your profile" %}{% endblock %}
 {% block content-header %}{% trans "Edit your profile" %}{% endblock %}
 {% block content-main %}
     <div class="grid grid--row">
@@ -9,38 +9,39 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="address" name="address">{% trans "Address" %}</label>
-                    <textarea id="address" name="address" type="text">{{profile.address}}</textarea>
+                    <textarea id="address" name="address" type="text">{{ profile.address }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="phone" name="phone">{% trans "Phone" %}</label>
-                    <input id="phone" name="phone" type="text" value="{{profile.phone}}">
+                    <input id="phone" name="phone" type="text" value="{{ profile.phone }}">
                 </div>
 
                 <div class="form-group">
                     <label for="public_info" name="public_info">{% trans "Public Info" %}</label>
-                    <textarea id="public_info" name="public_info" >{{public_profile.public_info}}</textarea><br />
-                    {%blocktrans%}This will be shown to the finder of your model{%endblocktrans%}
+                    <textarea id="public_info" name="public_info">{{ public_profile.public_info }}</textarea><br/>
+                    {% blocktrans %}This will be shown to the finder of your model{% endblocktrans %}
                 </div>
                 <div class="form-group">
                     <input type="submit">
                 </div>
-
-                <a href="{{profile_url}}">
-                <img src="{% url 'profile_code' %}">
-                </a>
-
-                <h3>
-                <ul>
-                {% for case in profile.user.cases.all %}
-                <li><a href="{% url 'case_owner' case.pk %}">{{case.timestamp}}</a>
-                {% empty %}
-                You never had a model reported here.
-                {% endfor %}
-                </ul>
-
-
             </form>
         </div>
+        <div class="grid-cell">
+            <a href="{{ profile_url }}">
+                {% blocktrans %}
+                    This is your QR-Code:
+                {% endblocktrans %}
+                <br /><img src="{% url 'profile_code' %}">
+            </a>
+        </div>
     </div>
-    </div>
+    <h3>
+    <ul>
+        {% for case in profile.user.cases.all %}
+            <li><a href="{% url 'case_owner' case.pk %}">{{ case.timestamp }}</a>
+        {% empty %}
+            You never had a model reported here.
+        {% endfor %}
+    </ul>
+
 {% endblock %}
