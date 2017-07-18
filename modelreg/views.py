@@ -112,6 +112,9 @@ def case_owner(req, pk):
 def index(req):
     return render(req, 'index.html')
 
+def about(req):
+    return render(req, 'about.html')
+
 
 @login_required
 def profile(req):

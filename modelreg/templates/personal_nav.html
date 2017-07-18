@@ -1,27 +1,27 @@
 {% load static %}
 {% load i18n %}
-<ul class="nav-top-list nav-top-list--right">
+<ul class="nav navbar-nav navbar-right">
     {% if request.user.is_authenticated %}
-        <li class="nav-top-list-item">
+        <li>
             <a href="{% url "profile" %}">
                 <i class="fa fa-user"></i>
                 {% trans "Profile" %}
             </a>
         </li>
-        <li class="nav-top-list-item">
+        <li>
             <a href="{% url "auth_logout" %}">
                 <i class="fa fa-sign-out"></i>
                 {% trans "Logout" %}
             </a>
         </li>
     {% else %}
-        <li class="nav-top-list-item">
+        <li>
             <a href="{% url "registration_register" %}">
                 <i class="fa fa-envelope"></i>
                 {% trans "Register" %}
             </a>
         </li>
-        <li class="nav-top-list-item">
+        <li>
             <a href="{% url "auth_login" %}">
                 <i class="fa fa-power-off"></i>
                 {% trans "Login" %}

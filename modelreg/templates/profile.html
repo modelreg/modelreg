@@ -3,36 +3,38 @@
 {% block title %}{{ block.super }}{% trans "Edit your profile" %}{% endblock %}
 {% block content-header %}{% trans "Edit your profile" %}{% endblock %}
 {% block content-main %}
-    <div class="grid">
-        <div class="grid-cell">
+    <div class="row">
+        <div class="col-md-8">
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="address">{% trans "Address" %}</label>
                     <textarea id="address" name="address" type="text"
                               class="form-control">{{ profile.address }}</textarea>
-
+                </div>
+                <div class="form-group">
                     <label for="phone">{% trans "Phone" %}</label>
                     <input id="phone" name="phone" type="text" value="{{ profile.phone }}" class="form-control">
-
+                </div>
+                <div class="form-group">
                     <label for="public_info">{% trans "Public Info" %}</label>
                     <textarea id="public_info" name="public_info"
+                              placeholder="{% trans "This will be shown to the finder of your model." %}"
                               class="form-control">{{ public_profile.public_info }}</textarea>
-                    {% blocktrans %}This will be shown to the finder of your model{% endblocktrans %}
-
-                    <button type="submit" class="btn btn-default">{% trans "Send message" %}</button>
                 </div>
+                    <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
             </form>
         </div>
-        <div class="grid-cell">
+        <div class="col-md-4 text-center">
             <a href="{{ profile_url }}">
                 <img src="{% url 'profile_code' %}"><br/>
                 {% trans "This is your QR-Code" %}
             </a>
         </div>
     </div>
-    <div class="grid">
-        <div class="grid-cell">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{% trans "Reports:"%}</h2>
             <h3>
                 <ul>
                     {% for case in profile.user.cases.all %}

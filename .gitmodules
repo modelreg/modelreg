@@ -1,6 +1,0 @@
-[submodule "static/adcssy"]
-	path = static/adcssy
-	url = https://github.com/adfinis-sygroup/adcssy
-[submodule "static/fontawesome"]
-	path = static/fontawesome
-	url = https://github.com/FortAwesome/Font-Awesome

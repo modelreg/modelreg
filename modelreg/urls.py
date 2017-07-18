@@ -34,5 +34,6 @@ urlpatterns = [
 
     url(r'^f/(?P<ident>[\w\d]+)\.(?P<auth>[\w\d]+)',  views.found, name='found'),
     url(r'^found/',  views.found_info, name='found_info'),
-    url(r'^$',  views.index),
+    url(r'^$',  views.index, name='index'),
+    url(r'^about/', views.about, name='about'),
 ]

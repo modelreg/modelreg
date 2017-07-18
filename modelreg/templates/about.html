@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ block.super }}{% trans "About modelREG" %}{% endblock %}
+{% block content-header %}{% trans "About modelREG" %}{% endblock %}
+{% block content-main %}
+    <p>{% trans "We're some guys form Switzerland thinking about building some useful measure to counter the \"Drone hate\" and over-reaching regulation fantasies that are currently going on in some of our governments." %}
+    <p>{% trans "Here's a rough outline of what we're trying to build:"%}
+    <ul>
+        <li>{% trans "A web application where people can register themselves (voluntarily, address verification via physical letter)"%}</li>
+        <li>{% trans "Ability to print out a sheet with QR codes to stick to your model (potentially as-a-service for a small fee)"%}</li>
+        <li>{% trans "The data will be fully encrypted. Part of the QR code URL would be a random key to decrypt part of your information (for example phone number and name)"%}</li>
+        <li>{% trans "Access via QR code will also give you the ability to notify the owner if you found a model"%}</li>
+    </ul>
+    <p>{% trans "This will be targeted towards recular RC clubs / plane owners, RC drone and racing clubs etc, as they do have similar requirements/problems."%}
+    <p>{% trans "The goal is to show to the government bodies that there is already a system in place that satisfies their actual requirements of criminal prosecution IF something happens and give a reasonable alternative to the transponder idea that DJI recently proposed (some of the guys in our civil aviation government body are playing with that idea as well)"%}
+    <p>{% trans "We're explicitly building this as free software, so clubs all over the world could run this themselves if they want. For the same reason, we're not using anything too new or fancy, so deployments should be simple and easy, with only a few standard django commands."%}
+{% endblock %}
