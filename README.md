@@ -70,15 +70,83 @@ Specification & Plans
 The specification and plans are found at [spec/README.md](spec/README.md).
 If you want to help out, see what's missing over there.
 
-Deployment
-----------
+Deployment - classic
+--------------------
+
+There are two ways of deployment: Either in a classic way, or using
+Docker.
 
 If you are a club or national body and want to use the software, *please*
-google how to properly deploy a Django application. There's a few more things
-to consider (like using a proper SQL database instead of sqlite3, and using an
-SSL/TLS certificate. The latter is utterly important, as there will be
-person-related information transferred on this application that you may not
-want everybody to see).
+google how to properly deploy a Django application.  There's a few more
+things to consider (like using a proper SQL database instead of sqlite3, and
+using an SSL/TLS certificate. The latter is utterly important, as there will
+be person-related information transferred on this application that you may
+not want everybody to see).
+
+Deployment with Docker
+----------------------
+
+With Docker, you can just run the following commands to get started:
+
+    docker build .
+    docker run
+
+Maybe in the future, we will also provide "official" modelreg docker images,
+so you won't have to build it yourself.
+
+The docker image provides a few points to configure the application, which
+you can use if you want:
+
+* *Volumes*:
+  * You may mount the "static" directory, so you can serve it properly via a
+    dedicated web server by adding the following parameters to `docker run`:
+    `-v /path/to/your/modelreg_static:/usr/src/app/static`
+  * If you're using SQLite (not recommended for production!), add
+    `-v /path/to/your/modelreg_db:/usr/src/app/db.sqlite3`
+
+* *Initialisation*:
+  * To update the database structure (required on the first run, or after
+    updates), add the following to `docker run`: `-e MIGRATE_DB=true`
+  * To create an initial superuser, use the environment variables
+    `SUPERUSER_NAME`, `SUPERUSER_EMAIL` and `SUPERUSER_PASSWORD`, as
+    follows:
+    `-e SUPERUSER_NAME=admin -e SUPERUSER_EMAIL=dave@example.org -e SUPERUSER_PASSWORD=verys3cr3t`
+    If those variables are not set, we assume that you already have
+    a superuser in your database.
+
+* *Running*
+  * *Database*: The Docker environment currently supports MySQL and PostgreSQL only.
+    This may change in the future to support other databases as well. Pass
+    the following env variables to tell the app about your DB server:
+    `DB_USER`, `DB_PASSWORD`, DB_NAME`, `DB_HOST` and `DB_TYPE`.
+
+    The `DB_TYPE` must be either the values `sqlite3` (the default), `mysql`
+    or `postgresql`.
+
+    Note: If you don't set those parameters, the default SQLite3 is used,
+    which is not suitable for production use!
+    `-e DB_TYPE=mysql -e DB_USER=username -e DB_PASSWORD=secretkey -e DB_NAME=modelreg -e DB_HOST=dbserver.local`
+
+    Optionally, you can also pass the port as `DB_PORT`. IF not given, it
+    will default to the database's default (5432 on PostgreSQL, 3306 for
+    MySQL)
+
+  * *Secret Key*: Django uses a secret key to encrypt cookies and
+    authentication tokens. By default, it is randomly generated on startup.
+    If you want to set it to a permanent value, pass it as `SECRET_KEY` env
+    variable:
+    `-e SECRET_KEY=ail4pulooMivu3LaiyaeB4phoDee8Ohnga6IeSheey2cohsu6i`
+
+  * *Port*: Set the address and port to listen on by using the `ADDRPORT`
+    variable: `-e ADDRPORT=localhost:8080`
+
+  * *Debugging*: You can enable debugging by adding the following parameter:
+    `-e DEBUG=true`
+
+  * *Allowed Hosts*: Django can restrict access, so the application will
+    only work on a given set of domains. This should be a comma-separated
+    list of domain names:
+    `-e ALLOWED_HOSTS=modelreg.example.org,www.modelreg.example.org`
 
 ToDo
 ----
