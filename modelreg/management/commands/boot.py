@@ -34,4 +34,6 @@ class Command(BaseCommand):
         call_command('migrate')
 
     def run_app(self):
-        call_command('runserver', os.getenv('ADDRPORT', 'localhost:8080'))
+        port = os.getenv('PORT', '8080')
+        host = '0.0.0.0'
+        call_command('runserver', '%s:%s'  %(host, port))

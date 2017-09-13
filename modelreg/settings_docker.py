@@ -60,3 +60,6 @@ if DB_TYPE not in _db_configs:
 DATABASES = {
     'default': _db_configs[DB_TYPE]
 }
+
+STATIC_ROOT = '/usr/share/app/static'
+
