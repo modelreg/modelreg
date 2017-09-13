@@ -137,8 +137,8 @@ you can use if you want:
     variable:
     `-e SECRET_KEY=ail4pulooMivu3LaiyaeB4phoDee8Ohnga6IeSheey2cohsu6i`
 
-  * *Port*: Set the address and port to listen on by using the `ADDRPORT`
-    variable: `-e ADDRPORT=localhost:8080`
+  * *Port*: Set the port to listen on by using the `PORT`
+    variable: `-e PORT=8080`
 
   * *Debugging*: You can enable debugging by adding the following parameter:
     `-e DEBUG=true`
