@@ -47,9 +47,21 @@ class Command(BaseCommand):
         call_command('migrate')
 
     def run_app(self):
-        port = os.getenv('PORT', '8080')
+        port = os.getenv('PORT', '9090')
         host = '0.0.0.0'
-        call_command('runserver', '%s:%s'  %(host, port))
+
+        from django.conf import settings
+
+        if self.has_flag('UWSGI'):
+            os.execvp(
+                'uwsgi',
+                ['--http',
+                 ':%d' % port,
+                 '--wsgi-file',
+                 os.path.join(settings.BASE_DIR, 'modelreg', 'wsgi.py')]
+            )
+        else:
+            call_command('runserver', '%s:%s'  %(host, port))
 
     def collectstatic(self):
         call_command('collectstatic', '--noinput')
