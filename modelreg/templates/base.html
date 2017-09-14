@@ -2,66 +2,79 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>{% block title %}ModelREG - {% endblock %}</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "adcssy/build/css/adcssy.min.css" %}">
-    <link rel="stylesheet" href="{% static "modelreg.css" %}">
-    <link rel="stylesheet" href="{% static "fontawesome/css/font-awesome.min.css" %}">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-</head>
-<body>
-{% block page %}
-    <div class="page">
-        <main class="page-main" style="background: #bbb">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}ModelREG - {% endblock %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <script script type="text/javascript" src="{% static "jquery/jquery.min.js"%}"></script>
+        <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+        <script script type="text/javascript" src="{% static "bootstrap/bootstrap.min.js"%}"></script>
+        <link rel="stylesheet" href="{% static "font-awesome/font-awesome.min.css" %}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="{% static "callout.css" %}">
+        <link rel="stylesheet" href="{% static "modelreg.css" %}">
+    </head>
+    <body>
+        {% block page %}
             <section class="page-content ">
-                <nav class="nav-top nav-top--fixed">
-                    <header class="nav-top-header">
-                        <button class="nav-toggle nav-top-toggle"
-                                onclick="this.parentNode.parentNode.classList.toggle('nav-top--expand')">
-                            <span class="nav-toggle-icon"></span>
-                        </button>
-                        <a href="#">
-                            <div class="nav-top-header-logo"></div>
-                            <div class="nav-top-header-title">ModelREG</div>
-                        </a>
-                    </header>
-                    <section class="nav-top-body">
-                        <ul class="nav-top-list">
-                            <li class="nav-top-list-item">
-                                <a href="{% url 'found_info' %}">
-                                    <i class="fa fa-power-off"></i>
-                                    {% trans "Found an airplane, drone, multicopter?" %}
-                                </a>
-                            </li>
-                            <li class="nav-top-list-item">
-                                <a href="https://github.com/modelreg/modelreg/blob/master/README.md" target="_blank">
-                                    <i class="fa fa-users"></i>
-                                    {% trans "About" %}
-                                </a>
-                            </li>
-                        </ul>
-                        {% include 'personal_nav.html' %}
-                    </section>
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">{% trans "Toggle navigation" %}</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="{% url "index" %}">ModelREG</a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="{% url 'found_info' %}">
+                                        <i class="fa fa-power-off"></i>
+                                        {% trans "Found an airplane, drone, multicopter?" %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/modelreg/modelreg" target="_blank">
+                                        <i class="fa fa-github" aria-hidden="true"></i>
+                                        {% trans "GitHub" %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/modelreg/modelreg/blob/master/README.md" target="_blank">
+                                        <i class="fa fa-users"></i>
+                                        {% trans "About" %}
+                                    </a>
+                                </li>
+                            </ul>
+                            {% include "personal_nav.html" %}
+                        </div><!--/.nav-collapse -->
+                    </div>
                 </nav>
-                <header class="page-content-header">
-                    <h2>{% block content-header %}Page header{% endblock %}</h2>
-                </header>
-                <section class="page-content-main">
-                    {% block content-main %}
+                {% block page-content %}
+                <div class="container">
+                    <header class="page-header">
+                        <h2>{% block content-header %}Page header{% endblock %}</h2>
+                    </header>
+                    <section class="page-content-main">
+                        {% block content-main %}
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    {% endblock %}
-                </section>
-                <footer class="page-content-footer">
-                    {% block content-footer %}
-                        <small>RC modelreg - <a href="https://github.com/modelreg/modelreg" target="_blank">https://github.com/modelreg/modelreg</a>
-                        </small>
-                    {% endblock %}
-                </footer>
+                        {% endblock %}
+                    </section>
+                </div>
+                {% endblock %}
             </section>
-        </main>
-    </div>
-{% endblock %}
-</body>
+            <footer class="footer">
+                <div class="container">
+                    <div class="text-muted">
+                        {% block content-footer %}
+                        RC modelREG on <a href="https://github.com/modelreg/modelreg" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+                        {% endblock %}
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+    </body>
 </html>
