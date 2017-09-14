@@ -47,15 +47,16 @@ class Command(BaseCommand):
         call_command('migrate')
 
     def run_app(self):
-        port = os.getenv('PORT', '9090')
+        port = int(os.getenv('PORT', '9090'))
         host = '0.0.0.0'
 
         from django.conf import settings
 
         if self.has_flag('UWSGI'):
+            print("Booting UWSGI on port %d" % port)
             os.execvp(
                 'uwsgi',
-                ['--http',
+                ['--uwsgi-socket',
                  ':%d' % port,
                  '--wsgi-file',
                  os.path.join(settings.BASE_DIR, 'modelreg', 'wsgi.py')]
