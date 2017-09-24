@@ -12,7 +12,7 @@ services:
     image: modelreg:latest
     hostname: modelreg
     volumes:
-      - ./storage/html/static:/usr/src/app/static
+      - ./storage/html/static:/usr/src/app/static:rw
     links:
       - db
     depends_on:
@@ -26,6 +26,7 @@ services:
       - MIGRATE=true
       - COLLECTSTATIC=true
       - UWSGI=true
+      - PORT=9090
       - SUPERUSER_NAME=admin
       - SUPERUSER_EMAIL=admin@example.com
       - SUPERUSER_PASSWORD=modelreg
@@ -37,5 +38,5 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ./storage/html:/usr/share/nginx/html
+      - ./storage/html:/usr/share/nginx/html:ro
       - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
