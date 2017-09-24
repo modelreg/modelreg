@@ -12,6 +12,7 @@ ENV DJANGO_SETTINGS_MODULE=modelreg.settings_docker
 
 CMD bash /usr/src/app/boot.sh
 
-COPY manage.py /usr/src/app/
-COPY modelreg  /usr/src/app/modelreg
 COPY scripts/boot.sh /usr/src/app/boot.sh
+COPY manage.py /usr/src/app/
+
+COPY modelreg  /usr/src/app/modelreg
