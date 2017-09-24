@@ -7,7 +7,11 @@ RUN pip install uwsgi
 RUN pip install -r requirements.txt
 
 EXPOSE 9090
-CMD python manage.py boot --settings=modelreg.settings_docker
+
+ENV DJANGO_SETTINGS_MODULE=modelreg.settings_docker
+
+CMD bash /usr/src/app/boot.sh
 
 COPY manage.py /usr/src/app/
 COPY modelreg  /usr/src/app/modelreg
+COPY scripts/boot.sh /usr/src/app/boot.sh
