@@ -24,8 +24,6 @@ class Command(BaseCommand):
         if 'SUPERUSER_NAME' in os.environ:
             self.create_superuser()
 
-        self.run_app()
-
     def create_superuser(self):
         user, created = User.objects.get_or_create(
             username = os.getenv('SUPERUSER_NAME'),
@@ -45,24 +43,6 @@ class Command(BaseCommand):
         self._wait_for_db()
         print("Migrating DB...")
         call_command('migrate')
-
-    def run_app(self):
-        port = int(os.getenv('PORT', '9090'))
-        host = '0.0.0.0'
-
-        from django.conf import settings
-
-        if self.has_flag('UWSGI'):
-            print("Booting UWSGI on port %d" % port)
-            os.execvp(
-                'uwsgi',
-                ['--uwsgi-socket',
-                 ':%d' % port,
-                 '--wsgi-file',
-                 os.path.join(settings.BASE_DIR, 'modelreg', 'wsgi.py')]
-            )
-        else:
-            call_command('runserver', '%s:%s'  %(host, port))
 
     def collectstatic(self):
         call_command('collectstatic', '--noinput')
