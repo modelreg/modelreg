@@ -61,5 +61,4 @@ DATABASES = {
     'default': _db_configs[DB_TYPE]
 }
 
-STATIC_ROOT = '/usr/share/app/static'
-
+STATIC_ROOT = '/usr/src/app/static'
