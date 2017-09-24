@@ -4,3 +4,4 @@
 .*.sw?
 db.sqlite3
 .idea
+storage
