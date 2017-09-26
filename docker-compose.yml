@@ -9,7 +9,7 @@ services:
     volumes:
       - ./storage/postgresql:/var/lib/postgresql
   app:
-    image: modelreg:latest
+    image: modelreg/modelreg:latest
     hostname: modelreg
     volumes:
       - ./storage/html/static:/usr/src/app/static:rw
