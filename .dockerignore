@@ -1,0 +1,9 @@
+db.sqlite3
+_dev
+docker-compose.yml
+.editorconfig
+.git*
+LICENSE
+.python-version
+requirements.txt
+scripts

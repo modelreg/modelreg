@@ -1,0 +1,42 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=modelreg
+      - POSTGRES_PASSWORD=modelreg
+      - POSTGRES_DB=modelreg
+    volumes:
+      - ./storage/postgresql:/var/lib/postgresql
+  app:
+    image: modelreg/modelreg:latest
+    hostname: modelreg
+    volumes:
+      - ./storage/html/static:/usr/src/app/static:rw
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      - DB_TYPE=postgresql
+      - DB_USER=modelreg
+      - DB_PASSWORD=modelreg
+      - DB_NAME=modelreg
+      - DB_HOST=db
+      - MIGRATE=true
+      - COLLECTSTATIC=true
+      - UWSGI=true
+      - PORT=9090
+      - SUPERUSER_NAME=admin
+      - SUPERUSER_EMAIL=admin@example.com
+      - SUPERUSER_PASSWORD=modelreg
+
+  nginx:
+    links:
+      - app
+    image: nginx
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./storage/html:/usr/share/nginx/html:ro
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro

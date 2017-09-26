@@ -136,9 +136,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'modelreg', 'static'),
+#]
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
@@ -147,3 +147,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL = 'profile'
 
 UPDATE_KEY='ahDie8po'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

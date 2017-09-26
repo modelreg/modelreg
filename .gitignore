@@ -4,3 +4,5 @@
 .*.sw?
 db.sqlite3
 .idea
+storage
+/static

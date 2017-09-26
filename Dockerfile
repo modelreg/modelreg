@@ -1,11 +1,18 @@
 FROM python:3
 WORKDIR /usr/src/app
 
-COPY . /usr/src/app
+COPY requirements.txt /usr/src/app/requirements.txt
+RUN pip install psycopg2
+RUN pip install uwsgi
 RUN pip install -r requirements.txt
 
-RUN python manage.py collectstatic --settings=modelreg.settings_docker
+EXPOSE 9090
 
-EXPOSE 8080
+ENV DJANGO_SETTINGS_MODULE=modelreg.settings_docker
 
-CMD python manage.py boot --settings=modelreg.settings_docker
+CMD bash /usr/src/app/boot.sh
+
+COPY scripts/boot.sh /usr/src/app/boot.sh
+COPY manage.py /usr/src/app/
+
+COPY modelreg  /usr/src/app/modelreg
