@@ -5,5 +5,3 @@ docker-compose.yml
 .git*
 LICENSE
 .python-version
-requirements.txt
-scripts
