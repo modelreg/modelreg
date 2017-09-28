@@ -47,7 +47,7 @@ class Case(models.Model):
     damage_type  = models.CharField(max_length=20, choices=TYPE_CHOICES, default='no_damage')
 
     model_owner    = models.ForeignKey(User, related_name='cases')
-    identifier     = models.CharField(max_length=10, default=make_identifier, blank=True)
+    identifier     = models.CharField(max_length=15, default=make_identifier, blank=True)
     timestamp      = models.DateTimeField(auto_now_add=True)
 
     reporter_email = models.EmailField()
