@@ -1,0 +1,439 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-28 08:57+0000\n"
+"PO-Revision-Date: 2017-09-28 10:57+0200\n"
+"Last-Translator: David Vogt <david.vogt@adfinis-sygroup.ch>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.3\n"
+
+#: modelreg/models.py:42
+msgid "No Damage"
+msgstr "Kein Schaden"
+
+#: modelreg/models.py:43
+msgid "Property Damage"
+msgstr "Gebäudeschaden"
+
+#: modelreg/models.py:44 modelreg/templates/found.html:29
+msgid "Injury"
+msgstr "Verletzung"
+
+#: modelreg/templates/about.html:3 modelreg/templates/about.html:4
+msgid "About modelREG"
+msgstr "Über ModelREG"
+
+#: modelreg/templates/about.html:6
+msgid ""
+"We're some guys form Switzerland thinking about building some useful measure "
+"to counter the \\"
+msgstr ""
+
+#: modelreg/templates/about.html:7
+msgid "Here's a rough outline of what we're trying to build:"
+msgstr ""
+
+#: modelreg/templates/about.html:9
+msgid ""
+"A web application where people can register themselves (voluntarily, address "
+"verification via physical letter)"
+msgstr ""
+
+#: modelreg/templates/about.html:10
+msgid ""
+"Ability to print out a sheet with QR codes to stick to your model "
+"(potentially as-a-service for a small fee)"
+msgstr ""
+
+#: modelreg/templates/about.html:11
+msgid ""
+"The data will be fully encrypted. Part of the QR code URL would be a random "
+"key to decrypt part of your information (for example phone number and name)"
+msgstr ""
+
+#: modelreg/templates/about.html:12
+msgid ""
+"Access via QR code will also give you the ability to notify the owner if you "
+"found a model"
+msgstr ""
+
+#: modelreg/templates/about.html:14
+msgid ""
+"This will be targeted towards recular RC clubs / plane owners, RC drone and "
+"racing clubs etc, as they do have similar requirements/problems."
+msgstr ""
+
+#: modelreg/templates/about.html:15
+msgid ""
+"The goal is to show to the government bodies that there is already a system "
+"in place that satisfies their actual requirements of criminal prosecution IF "
+"something happens and give a reasonable alternative to the transponder idea "
+"that DJI recently proposed (some of the guys in our civil aviation "
+"government body are playing with that idea as well)"
+msgstr ""
+
+#: modelreg/templates/about.html:16
+msgid ""
+"We're explicitly building this as free software, so clubs all over the world "
+"could run this themselves if they want. For the same reason, we're not using "
+"anything too new or fancy, so deployments should be simple and easy, with "
+"only a few standard django commands."
+msgstr ""
+
+#: modelreg/templates/base.html:24
+msgid "Toggle navigation"
+msgstr ""
+
+#: modelreg/templates/base.html:36
+msgid "Found an airplane, drone, multicopter?"
+msgstr ""
+
+#: modelreg/templates/base.html:42
+msgid "GitHub"
+msgstr ""
+
+#: modelreg/templates/base.html:48
+msgid "About"
+msgstr "Über"
+
+#: modelreg/templates/case_finder.html:3 modelreg/templates/case_finder.html:4
+#: modelreg/templates/case_owner.html:3 modelreg/templates/case_owner.html:4
+#: modelreg/templates/found.html:3 modelreg/templates/found.html:4
+#: modelreg/templates/found_info.html:3 modelreg/templates/found_info.html:4
+#: modelreg/templates/messaging_base.html:3
+#: modelreg/templates/messaging_base.html:4
+msgid "RC Model found"
+msgstr "RC-Modell gefunden"
+
+#: modelreg/templates/case_finder.html:3 modelreg/templates/case_finder.html:4
+#: modelreg/templates/case_owner.html:3 modelreg/templates/case_owner.html:4
+msgid "Case Type: "
+msgstr ""
+
+#: modelreg/templates/case_finder.html:16
+msgid "Owner"
+msgstr "Besitzer"
+
+#: modelreg/templates/case_finder.html:16 modelreg/templates/case_owner.html:16
+msgid "You"
+msgstr "Sie"
+
+#: modelreg/templates/case_finder.html:35 modelreg/templates/case_owner.html:35
+msgid "What would you like to tell the rc model owner?"
+msgstr "Was möchten Sie dem Modelleigentümer mitteilen?"
+
+#: modelreg/templates/case_finder.html:40 modelreg/templates/case_owner.html:40
+#: modelreg/templates/found.html:66 modelreg/templates/messaging_base.html:18
+msgid "Send message"
+msgstr "Nachricht senden"
+
+#: modelreg/templates/case_owner.html:16
+msgid "Finder"
+msgstr "Finder"
+
+#: modelreg/templates/found.html:7
+msgid "Why am I here?"
+msgstr "Warum bin ich hier?"
+
+#: modelreg/templates/found.html:8
+msgid ""
+"\n"
+"        <p>You just found a RC model from a pilot registered on ModelREG.</"
+"p>\n"
+"        <p>You can now contact the owner and inform him about damage he has "
+"caused or just that you would like to return his model.</p>\n"
+"        <p>Don't know what RC models are? Read more about it <a href="
+"\"https://en.wikipedia.org/wiki/Radio-controlled_model\">here</a>!</p>\n"
+"        "
+msgstr ""
+"\n"
+"        <p>Sie haben ein RC-Modell gefunden, das einem registrierten Piloten "
+"gehört.</p>\n"
+"        <p>Sie können den Besitzer kontaktieren und ihn über eventuelle "
+"Schäden informieren - oder ihn einfach benachrichtigen, dass Sie das Modell "
+"zurückgeben möchten.</p>\n"
+"        <p>Sie wissen nicht was RC-Modelle sind? <a href=\"https://de."
+"wikipedia.org/wiki/Flugmodell\">Lesen Sie hier mehr</a>!</p>\n"
+"       "
+
+#: modelreg/templates/found.html:16
+msgid "Here's some words from the owner"
+msgstr "Nachricht vom Besitzer"
+
+#: modelreg/templates/found.html:26
+msgid ""
+"Please select whether the model has caused any damage (personal, property, "
+"or other)"
+msgstr ""
+
+#: modelreg/templates/found.html:27
+msgid "No damage"
+msgstr ""
+
+#: modelreg/templates/found.html:28
+msgid "Property damage"
+msgstr ""
+
+#: modelreg/templates/found.html:30
+msgid "Other"
+msgstr ""
+
+#: modelreg/templates/found.html:35
+msgid "Message to the Owner"
+msgstr ""
+
+#: modelreg/templates/found.html:37
+msgid ""
+"You can send a message to the owner here. Let them know that you have their "
+"model, and they will be able to respond."
+msgstr ""
+
+#: modelreg/templates/found.html:44
+msgid "Why do you need my email address?"
+msgstr ""
+
+#: modelreg/templates/found.html:46
+msgid ""
+"\n"
+"            We will send you an email so you can get back to this if there "
+"are\n"
+"            any problems - for example if the owner does not respond or you\n"
+"            can't agree with them over damages or other issues.\n"
+"            "
+msgstr ""
+
+#: modelreg/templates/found.html:55
+msgid "Email address"
+msgstr ""
+
+#: modelreg/templates/found.html:57 modelreg/templates/found.html:63
+msgid "Enter your email address"
+msgstr ""
+
+#: modelreg/templates/found.html:61
+msgid "Confirm email address"
+msgstr ""
+
+#: modelreg/templates/found_info.html:8
+msgid ""
+"\n"
+"            If you found a model, please scan the QR code on your mobile\n"
+"            phone to contact the owner.\n"
+"\n"
+"            (TODO: Insert Picture...)\n"
+"            "
+msgstr ""
+
+#: modelreg/templates/index.html:3 modelreg/templates/index.html:7
+msgid "Welcome to ModelReg"
+msgstr ""
+
+#: modelreg/templates/index.html:8
+msgid ""
+"\n"
+"    <p class='lead'>This site is a service to register RC model pilots and "
+"let you contact them if a model is lost.</p>\n"
+"    "
+msgstr ""
+
+#: modelreg/templates/index.html:12
+msgid "How it works"
+msgstr ""
+
+#: modelreg/templates/index.html:13
+msgid ""
+"\n"
+"    <p class='lead'>Registered pilots which verified their address via "
+"letter, receive a\n"
+"    <a href=\"https://en.wikipedia.org/wiki/QR_code\" target=\"_blank\">QR-"
+"Code</a></p>\n"
+"    "
+msgstr ""
+
+#: modelreg/templates/messaging_admin.html:3
+#: modelreg/templates/messaging_admin.html:4
+msgid "Admin messaging"
+msgstr ""
+
+#: modelreg/templates/messaging_admin.html:14
+msgid "Release owner information"
+msgstr ""
+
+#: modelreg/templates/messaging_admin.html:15
+msgid "Force close case"
+msgstr ""
+
+#: modelreg/templates/messaging_admin.html:16
+#: modelreg/templates/messaging_finder.html:22
+#: modelreg/templates/messaging_owner.html:21
+msgid "Export conversation as PDF"
+msgstr ""
+
+#: modelreg/templates/messaging_base.html:15
+msgid "What would you like to say?"
+msgstr ""
+
+#: modelreg/templates/messaging_finder.html:3
+#: modelreg/templates/messaging_finder.html:4
+msgid "Finder messaging"
+msgstr ""
+
+#: modelreg/templates/messaging_finder.html:6
+msgid ""
+"\n"
+"        You can talk to the model's owner right on\n"
+"        this plage. If there are problems, use the\n"
+"        functionality below.\n"
+"\n"
+"        Please note that ModelREG is not\n"
+"        responsible for any damages the model\n"
+"        has caused. Try to talk to the owner, or\n"
+"        let us know if the owner does not\n"
+"        cooperate, then we will take it further.\n"
+"    "
+msgstr ""
+
+#: modelreg/templates/messaging_finder.html:19
+msgid "Owner does not want to pay for damage"
+msgstr ""
+
+#: modelreg/templates/messaging_finder.html:20
+#: modelreg/templates/messaging_owner.html:20
+msgid "Case closed, all good"
+msgstr ""
+
+#: modelreg/templates/messaging_finder.html:21
+msgid "Help, owner did not reply"
+msgstr ""
+
+#: modelreg/templates/messaging_owner.html:3
+#: modelreg/templates/messaging_owner.html:4
+msgid "Owner messaging"
+msgstr ""
+
+#: modelreg/templates/messaging_owner.html:6
+msgid ""
+"\n"
+"        You can talk to the finder right on\n"
+"        this plage. If there are problems,\n"
+"        use the functionality below.\n"
+"\n"
+"        Please note that ModelREG is not\n"
+"        responsible for any damages the model\n"
+"        has caused. Try to talk to the owner, or\n"
+"        let us know if the owner does not\n"
+"        cooperate, then we will take it further.\n"
+"    "
+msgstr ""
+
+#: modelreg/templates/messaging_owner.html:19
+msgid "Finder demands undue compensation"
+msgstr ""
+
+#: modelreg/templates/personal_nav.html:8
+msgid "Profile"
+msgstr "Profil"
+
+#: modelreg/templates/personal_nav.html:14
+#: modelreg/templates/registration/logout.html:3
+#: modelreg/templates/registration/logout.html:4
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: modelreg/templates/personal_nav.html:21
+#: modelreg/templates/registration/registration_form.html:3
+#: modelreg/templates/registration/registration_form.html:4
+msgid "Register"
+msgstr "Registrieren"
+
+#: modelreg/templates/personal_nav.html:27
+#: modelreg/templates/registration/login.html:3
+#: modelreg/templates/registration/login.html:4
+msgid "Login"
+msgstr "Anmelden"
+
+#: modelreg/templates/profile.html:3 modelreg/templates/profile.html:4
+msgid "Edit your profile"
+msgstr "Profil bearbeiten"
+
+#: modelreg/templates/profile.html:11
+msgid "Address"
+msgstr "Adresse"
+
+#: modelreg/templates/profile.html:16
+msgid "Phone"
+msgstr "Telefon"
+
+#: modelreg/templates/profile.html:20
+msgid "Public Info"
+msgstr "Öffentliche Informationen"
+
+#: modelreg/templates/profile.html:22
+msgid "This will be shown to the finder of your model."
+msgstr ""
+"Dies wird dem Finder Ihres Modells angezeigt, wenn er diese Seite aufruft."
+
+#: modelreg/templates/profile.html:25
+msgid "Save"
+msgstr "Speichern"
+
+#: modelreg/templates/profile.html:31
+msgid "This is your QR-Code"
+msgstr "Ihr QR-Code"
+
+#: modelreg/templates/profile.html:37
+msgid "Reports:"
+msgstr ""
+
+#: modelreg/templates/registration/activation_complete.html:3
+#: modelreg/templates/registration/activation_complete.html:4
+msgid "Activation complete"
+msgstr ""
+
+#: modelreg/templates/registration/activation_complete.html:6
+msgid ""
+"\n"
+"    Well done, thanks!\n"
+"    "
+msgstr ""
+
+#: modelreg/templates/registration/login.html:19
+msgid "Sign in"
+msgstr "Einloggen"
+
+#: modelreg/templates/registration/login.html:24
+msgid "Forgot password?"
+msgstr "Passwort vergessen?"
+
+#: modelreg/templates/registration/logout.html:6
+msgid ""
+"\n"
+"    Thanks for visiting. You're now logged out. See you soon!\n"
+"    "
+msgstr ""
+
+#: modelreg/templates/registration/registration_complete.html:3
+#: modelreg/templates/registration/registration_complete.html:4
+msgid "Registration complete"
+msgstr "Registration vollständig"
+
+#: modelreg/templates/registration/registration_complete.html:6
+msgid ""
+"\n"
+"    Your account has been created. Please\n"
+"    "
+msgstr ""
+
+#~ msgid "Password"
+#~ msgstr "Passwort"
