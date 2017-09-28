@@ -148,6 +148,20 @@ you can use if you want:
     list of domain names:
     `-e ALLOWED_HOSTS=modelreg.example.org,www.modelreg.example.org`
 
+  * *Email settings*: By default, the app does not send email and prints
+    emails to be sent to STDOUT. To enable sending emails, you need to
+    pass valid configuration via the following environment variables.
+    They map directly to the corresponding settings in Django, documented
+    here: https://docs.djangoproject.com/en/1.11/ref/settings/#email-host
+
+    * `-e EMAIL_HOST=smtp.myserver.com`
+    * `-e EMAIL_PORT=587`
+    * `-e EMAIL_HOST_USER=modelreguser`
+    * `-e EMAIL_HOST_PASSWORD=verysecret!`
+    * `-e EMAIL_USE_SSL=true`
+    * `-e EMAIL_USE_TLS=false`
+
+
 ToDo
 ----
 

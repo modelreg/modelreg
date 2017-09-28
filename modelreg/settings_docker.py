@@ -29,6 +29,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 
 
+
 _db_configs = {
     'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -62,3 +63,31 @@ DATABASES = {
 }
 
 STATIC_ROOT = '/usr/src/app/static'
+
+def bool_from_str(val):
+    return val.lower() in ('true', '1', 'ok', 'yes')
+
+def set_from_env(varname, convert=str):
+    """Set given (global) settings variable from env, if it is set
+
+    You can pass a convert function, for example if the required
+    settings value needs to be an integer:
+
+    >>> set_from_env('EMAIL_PORT', int)
+    """
+    value = os.getenv(varname, False)
+    if value is not False:
+        globals()[varname] = convert(value)
+
+if os.getenv('EMAIL_HOST', False):
+    # If we have SMTP config, use SMTP backend. Default is "console",
+    # which is only useful for testing / development and will NOT
+    # send out email.
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    set_if_exists('EMAIL_HOST')
+    set_if_exists('EMAIL_PORT', int)
+    set_if_exists('EMAIL_HOST_USER')
+    set_if_exists('EMAIL_HOST_PASSWORD')
+    set_if_exists('EMAIL_USE_TLS', bool_from_str)
+    set_if_exists('EMAIL_USE_SSL', bool_from_str)
+
