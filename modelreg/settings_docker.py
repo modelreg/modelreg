@@ -29,7 +29,6 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 
 
-
 _db_configs = {
     'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -84,10 +83,10 @@ if os.getenv('EMAIL_HOST', False):
     # which is only useful for testing / development and will NOT
     # send out email.
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    set_if_exists('EMAIL_HOST')
-    set_if_exists('EMAIL_PORT', int)
-    set_if_exists('EMAIL_HOST_USER')
-    set_if_exists('EMAIL_HOST_PASSWORD')
-    set_if_exists('EMAIL_USE_TLS', bool_from_str)
-    set_if_exists('EMAIL_USE_SSL', bool_from_str)
+    set_from_env('EMAIL_HOST')
+    set_from_env('EMAIL_PORT', int)
+    set_from_env('EMAIL_HOST_USER')
+    set_from_env('EMAIL_HOST_PASSWORD')
+    set_from_env('EMAIL_USE_TLS', bool_from_str)
+    set_from_env('EMAIL_USE_SSL', bool_from_str)
 
