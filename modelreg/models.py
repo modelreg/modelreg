@@ -27,8 +27,8 @@ class PublicProfile(models.Model):
 
     user        = models.OneToOneField(User, related_name='public_profile')
     public_info = models.TextField()
-    identifier  = models.CharField(max_length=10, default=make_identifier, blank=True)
-    auth        = models.CharField(max_length=10, default=make_identifier, blank=True)
+    identifier  = models.CharField(max_length=15, default=make_identifier, blank=True)
+    auth        = models.CharField(max_length=15, default=make_identifier, blank=True)
 
     class Meta:
         indexes = [
