@@ -2,6 +2,8 @@ FROM python:3
 WORKDIR /usr/src/app
 
 COPY requirements.txt /usr/src/app/requirements.txt
+RUN wget https://github.com/vhf/confusable_homoglyphs/raw/master/confusables.json
+RUN wget https://github.com/vhf/confusable_homoglyphs/raw/master/categories.json
 RUN pip install psycopg2
 RUN pip install uwsgi
 RUN pip install -r requirements.txt
