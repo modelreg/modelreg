@@ -5,9 +5,11 @@
 {% block content-main %}
     <div class="bs-callout bs-callout-warning">
         <h4>{% trans "Why am I here?" %}</h4>
-        <p>{%trans "You just found a RC model from a pilot registered on ModelREG." %}</p>
-        <p>{%trans "You can now contact the owner and inform him about damage he has caused or just that you would like to return his model." %}</p>
-        <p>{%trans "Dont know what RC models are? Read more about it " %}<a href="https://en.wikipedia.org/wiki/Radio-controlled_model">{%trans "here!" %}</a></p>
+        {% blocktrans %}
+        <p>You just found a RC model from a pilot registered on ModelREG.</p>
+        <p>You can now contact the owner and inform him about damage he has caused or just that you would like to return his model.</p>
+        <p>Don't know what RC models are? Read more about it <a href="https://en.wikipedia.org/wiki/Radio-controlled_model">here</a>!</p>
+        {% endblocktrans %}
     </div>
     {% if public_profile.public_info %}
     <div class="bs-callout bs-callout-info">
@@ -21,11 +23,11 @@
 
         <div class="form-group">
             <select class="form-control" name="damage_type" required>
-                <option selected disabled>{% trans "Please select whether the model has caused any damage (personal, property, or otherwise)" %}</option>
+                <option selected disabled>{% trans "Please select whether the model has caused any damage (personal, property, or other)" %}</option>
                 <option value="no_damage">{% trans "No damage" %}</option>
                 <option value="property_damage">{% trans "Property damage" %}</option>
                 <option value="injury">{% trans "Injury" %}</option>
-                <option value="otherwise">{% trans "Otherwise" %}</option>
+                <option value="otherwise">{% trans "Other" %}</option>
             </select>
         </div>
 
@@ -42,8 +44,9 @@
             <h4>{% trans "Why do you need my email address?" %}</h4>
             <p>
             {% blocktrans %}
-            We will send you an email so you can get back to this if there are any problems - for example if the owner
-            does not respond or you can't agree with them over damages or other issues.
+            We will send you an email so you can get back to this if there are
+            any problems - for example if the owner does not respond or you
+            can't agree with them over damages or other issues.
             {% endblocktrans %}
             </p>
         </div>
