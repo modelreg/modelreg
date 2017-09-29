@@ -21,8 +21,6 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    url(r'^system/update/%s' % settings.UPDATE_KEY, views.system_update),
-
     url(r'^admin/',    admin.site.urls),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^profile/qrcode.png',  views.profile_qrcode_img, name='profile_code'),

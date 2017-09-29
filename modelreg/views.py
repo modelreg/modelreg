@@ -176,25 +176,3 @@ def profile_qrcode_img(req):
 
     img.save(response, 'png')
     return response
-
-
-@csrf_exempt
-def system_update(req):
-    import uwsgi
-    import git
-    from django.core.management import call_command
-
-    # This does not work properly yet, so disabling the code for now
-    # if req.POST['ref'] != 'refs/heads/master':
-    #     response = HttpResponseBadRequest()
-    #     response.write("Not master branch, not updating")
-    #     return response
-
-
-    git_cmd = git.cmd.Git(settings.BASE_DIR)
-    git_cmd.pull()
-
-    call_command('migrate')
-
-    uwsgi.reload()
-    return render(req, 'system_update.html')
