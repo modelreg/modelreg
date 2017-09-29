@@ -1,1 +1,1 @@
-modelreg - activaate
+{{site.domain}} activation (modelreg)

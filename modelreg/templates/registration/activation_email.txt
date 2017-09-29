@@ -1,18 +1,16 @@
+Hi {{user}}
 
-ohai
-
-goto here:
-
-you need dis key: {{activation_key}}
-
-expires in {{expiration_days}}
-
-dis is teh user: {{user}}
-
-{{site.domain}}
-
+Thank you for registering on {{site.domain}}!
+To activate your account, click the following link:
 {% if request.is_secure %}
-url for activation: https://{{site.domain}}{% url 'registration_activate' activation_key %}
+https://{{site.domain}}{% url 'registration_activate' activation_key %}
 {% else %}
-url for activation: http://{{site.domain}}{% url 'registration_activate' activation_key %}
+http://{{site.domain}}{% url 'registration_activate' activation_key %}
 {% endif %}
+
+Your chosen user name is: {{user}}
+Your activation key is {{activation_key}}
+and it will expire in {{expiration_days}} days.
+
+Best regards,
+The {{site.domain}} system
