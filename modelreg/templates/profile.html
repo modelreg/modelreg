@@ -40,7 +40,7 @@
                     {% for case in profile.user.cases.all %}
                         <li><a href="{% url 'case_owner' case.pk %}">{{ case.timestamp }}</a>
                     {% empty %}
-                        You never had a model reported here.
+                        {% trans 'You never had a model reported here.' %}
                     {% endfor %}
                 </ul>
             </h3>

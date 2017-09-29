@@ -1,18 +1,16 @@
+{% load i18n %}
+{% url 'registration_activate' activation_key as path %}
+{% blocktrans with domain=site.domain scheme=request.scheme|default:"http" %}
+Hi {{user}}
 
-ohai
+Thank you for registering on {{domain}}!
+To activate your account, click the following link:
+{{scheme}}://{{domain}}{{path}}
 
-goto here:
+Your chosen user name is: {{user}}
+Your activation key is {{activation_key}}
+and it will expire in {{expiration_days}} days.
 
-you need dis key: {{activation_key}}
-
-expires in {{expiration_days}}
-
-dis is teh user: {{user}}
-
-{{site.domain}}
-
-{% if request.is_secure %}
-url for activation: https://{{site.domain}}{% url 'registration_activate' activation_key %}
-{% else %}
-url for activation: http://{{site.domain}}{% url 'registration_activate' activation_key %}
-{% endif %}
+Best regards,
+The {{domain}} system
+{% endblocktrans %}

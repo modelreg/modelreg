@@ -1,1 +1,2 @@
-modelreg - activaate
+{% load i18n %}
+{% blocktrans with domain=site.domain %}{{domain}} activation (modelreg){% endblocktrans %}
