@@ -74,7 +74,7 @@ Deployment - classic
 --------------------
 
 There are two ways of deployment: Either in a classic way, or using
-Docker.
+Docker Compose.
 
 If you are a club or national body and want to use the software, *please*
 google how to properly deploy a Django application.  There's a few more
@@ -83,19 +83,20 @@ using an SSL/TLS certificate. The latter is utterly important, as there will
 be person-related information transferred on this application that you may
 not want everybody to see).
 
-Deployment with Docker
-----------------------
+Deployment with Docker Compose
+------------------------------
 
-With Docker, you can just run the following commands to get started:
+With Docker Compose, you can just run the following commands to get started:
 
-    docker build .
-    docker run
+    docker-compose up
 
-Maybe in the future, we will also provide "official" modelreg docker images,
-so you won't have to build it yourself.
+We will also provide "official" modelreg docker images which you can find [on Docker Hub](https://hub.docker.com/r/modelreg/modelreg/).
+
+To get the image up and running, you need to copy `.env.example` to `.env` and
+configure this file to your liking.
 
 The docker image provides a few points to configure the application, which
-you can use if you want:
+you can change if you want:
 
 * *Volumes*:
   * You may mount the "static" directory, so you can serve it properly via a
