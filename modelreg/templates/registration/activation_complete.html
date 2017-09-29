@@ -4,8 +4,7 @@
 {% block content-header %}{% trans "Activation complete" %}{% endblock %}
 {% block content-main %}
     {% blocktrans %}
-    Thank you! Your account is now activated and you are able to
+    Thank you! Your account is now activated and you are able to <a href="{% url "auth_login" %}">Login</a>.
     {% endblocktrans %}
-    <a href="{% url "auth_login" %}">{% trans "Login" %}</a>.
 {% endblock %}
 
