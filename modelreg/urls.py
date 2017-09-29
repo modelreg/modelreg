@@ -18,10 +18,11 @@ from django.contrib import admin
 
 from django.conf import settings
 
-from . import views
+from . import views, registration_view
 
 urlpatterns = [
     url(r'^admin/',    admin.site.urls),
+    url(r'^accounts/register/$', registration_view.RegistrationView.as_view()),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^profile/qrcode.png',  views.profile_qrcode_img, name='profile_code'),
     url(r'^profile/edit',        views.profile, name='profile'),
