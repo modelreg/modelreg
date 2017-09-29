@@ -5,7 +5,7 @@ Hi {{user}}
 
 Thank you for registering on {{domain}}!
 To activate your account, click the following link:
-{{scheme}}://{{domain}}{{path}}
+{{base_url}}{{path}}
 
 Your chosen user name is: {{user}}
 Your activation key is {{activation_key}}
