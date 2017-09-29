@@ -146,6 +146,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'profile'
 
-UPDATE_KEY='ahDie8po'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

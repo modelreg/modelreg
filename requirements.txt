@@ -2,4 +2,3 @@ django
 django-registration
 qrcode
 pillow
-pygit
