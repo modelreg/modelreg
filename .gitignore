@@ -7,3 +7,5 @@ db.sqlite3
 storage
 /static
 .env
+categories.json
+confusables.json
