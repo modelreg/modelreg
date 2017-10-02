@@ -1,0 +1,19 @@
+{% load i18n %}
+{% blocktrans %}
+Hi there!
+
+Your model has been found! The finder has left you a message. Click the link at
+the end of this message to respond.
+
+------------------------ 8< ----------------------
+{{message}}
+------------------------ >8 ----------------------
+
+
+Open this link to respond:
+{{owner_link}}
+Note that replies to this email will not be read, so use the link instead.
+
+Best, {{operator}}
+
+{% endblocktrans %}

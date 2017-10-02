@@ -1,0 +1,14 @@
+{% load i18n %}
+{% blocktrans %}
+Hi there!
+
+You successfully opened up a case with {{operator}}. The owner of the model
+has been notified. We'll let you know when they reply.
+
+Open this link to view the case:
+{{finder_link}}
+Note that replies to this email will not be read, so use the link instead.
+
+
+Best, {{operator}}
+{% endblocktrans %}

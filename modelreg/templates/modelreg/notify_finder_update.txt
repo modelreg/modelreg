@@ -1,0 +1,19 @@
+{% load i18n %}
+{% blocktrans %}
+Hi there!
+
+A while ago, you reported a lost model. The owner of the model just replied to
+your message:
+
+------------------------ 8< ----------------------
+{{message}}
+------------------------ >8 ----------------------
+
+
+Open this link to respond:
+{{finder_link}}
+Note that replies to this email will not be read, so use the link instead.
+
+Best, {{operator}}
+
+{% endblocktrans %}
