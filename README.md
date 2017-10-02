@@ -34,7 +34,9 @@ only a few standard django commands.
 Project status
 --------------
 
-If you see this, you're welcome to help. Not much working as of now.
+If you see this, you're welcome to help. Go checkout the [issues on
+Github](https://github.com/modelreg/modelreg/issues) to see if there's
+something that you could work on :)
 
 Contributing
 ------------
@@ -90,7 +92,8 @@ With Docker Compose, you can just run the following commands to get started:
 
     docker-compose up
 
-We will also provide "official" modelreg docker images which you can find [on Docker Hub](https://hub.docker.com/r/modelreg/modelreg/).
+We also provide "official" modelreg docker images which you can
+find [on Docker Hub](https://hub.docker.com/r/modelreg/modelreg/).
 
 To get the image up and running, you need to copy `.env.example` to `.env` and
 configure this file to your liking.
@@ -99,19 +102,18 @@ The docker image provides a few points to configure the application, which
 you can change if you want:
 
 * *Volumes*:
-  * You may mount the "static" directory, so you can serve it properly via a
-    dedicated web server by adding the following parameters to `docker run`:
-    `-v /path/to/your/modelreg_static:/usr/src/app/static`
-  * If you're using SQLite (not recommended for production!), add
-    `-v /path/to/your/modelreg_db:/usr/src/app/db.sqlite3`
+  * `/usr/src/app/static` This contains the static files for the
+    application. You should mount the "static" directory, so you can serve
+    it properly via a dedicated web server by adding the following
+    parameters to `docker run`:
+  * `/usr/src/app/db.sqlite3` Mount this if you're using SQLite (not
+    recommended for production!)
 
 * *Initialisation*:
   * To update the database structure (required on the first run, or after
-    updates), add the following to `docker run`: `-e MIGRATE_DB=true`
+    updates), set the following env variable: `MIGRATE=true`
   * To create an initial superuser, use the environment variables
-    `SUPERUSER_NAME`, `SUPERUSER_EMAIL` and `SUPERUSER_PASSWORD`, as
-    follows:
-    `-e SUPERUSER_NAME=admin -e SUPERUSER_EMAIL=dave@example.org -e SUPERUSER_PASSWORD=verys3cr3t`
+    `SUPERUSER_NAME`, `SUPERUSER_EMAIL` and `SUPERUSER_PASSWORD`.
     If those variables are not set, we assume that you already have
     a superuser in your database.
 
@@ -126,7 +128,6 @@ you can change if you want:
 
     Note: If you don't set those parameters, the default SQLite3 is used,
     which is not suitable for production use!
-    `-e DB_TYPE=mysql -e DB_USER=username -e DB_PASSWORD=secretkey -e DB_NAME=modelreg -e DB_HOST=dbserver.local`
 
     Optionally, you can also pass the port as `DB_PORT`. IF not given, it
     will default to the database's default (5432 on PostgreSQL, 3306 for
@@ -135,19 +136,21 @@ you can change if you want:
   * *Secret Key*: Django uses a secret key to encrypt cookies and
     authentication tokens. By default, it is randomly generated on startup.
     If you want to set it to a permanent value, pass it as `SECRET_KEY` env
-    variable:
-    `-e SECRET_KEY=ail4pulooMivu3LaiyaeB4phoDee8Ohnga6IeSheey2cohsu6i`
+    variable.
 
   * *Port*: Set the port to listen on by using the `PORT`
-    variable: `-e PORT=8080`
+    variable.
+
+  * `UWSGI=true`: Enable UWSGI mode. This is preferred when using the application in
+    production. If not set, the application will run a regular HTTP server.
 
   * *Debugging*: You can enable debugging by adding the following parameter:
-    `-e DEBUG=true`
+    `DEBUG=true`
 
   * *Allowed Hosts*: Django can restrict access, so the application will
     only work on a given set of domains. This should be a comma-separated
     list of domain names:
-    `-e ALLOWED_HOSTS=modelreg.example.org,www.modelreg.example.org`
+    `ALLOWED_HOSTS=modelreg.example.org,www.modelreg.example.org`
 
   * *Email settings*: By default, the app does not send email and prints
     emails to be sent to STDOUT. To enable sending emails, you need to
@@ -155,41 +158,20 @@ you can change if you want:
     They map directly to the corresponding settings in Django, documented
     here: https://docs.djangoproject.com/en/1.11/ref/settings/#email-host
 
-    * `-e EMAIL_HOST=smtp.myserver.com`
-    * `-e EMAIL_PORT=587`
-    * `-e EMAIL_HOST_USER=modelreguser`
-    * `-e EMAIL_HOST_PASSWORD=verysecret!`
-    * `-e EMAIL_USE_SSL=true`
-    * `-e EMAIL_USE_TLS=false`
+    * `EMAIL_HOST=smtp.myserver.com`
+    * `EMAIL_PORT=587`
+    * `EMAIL_HOST_USER=modelreguser`
+    * `EMAIL_HOST_PASSWORD=verysecret!`
+    * `EMAIL_USE_SSL=true`
+    * `EMAIL_USE_TLS=false`
 
   * *System settings*: Set the following variables to configure the name
     and email address of your application.
 
-    * `-e SYSTEM_EMAIL=system@example.com` - The email address that is used
+    * `SYSTEM_EMAIL=system@example.com` - The email address that is used
       as the sender of all notifications. Does not need to own a mailbox.
-    * `-e SYSTEM_OPERATOR="ModelReg Team"` - The name of your team. Is used
+    * `SYSTEM_OPERATOR="ModelReg Team"` - The name of your team. Is used
       as the greetings line in emails
-
-ToDo
-----
-
-* Surround the QR-Code with the words "found?" and the translation to the user
-  language, so the finder knows to scan the code
-* Use DJango versioning for the fields address and qr-code
-  * QR-Code so that all old QR-Codes can be matched to the user
-  * Address, so that the admin can access the verified address and history
-* QR-Code rate limiting (the user can only create one new QR-Code per day)
-* QR-Code caching to not calculate it every time from scratch
-* Validate postal address, during testing and development, send the validation
-  code via email
-* OAuth support
-* Postal address add verified field
-* Send a reminder (to finder and user) email (and finally close the case) if no
-  messages where exchanged for some time.
-* Obvious:
-  * Translations
-  * Make it pretty
-  * Create unit tests
 
 License
 -------
