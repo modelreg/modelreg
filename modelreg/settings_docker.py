@@ -90,3 +90,5 @@ if os.getenv('EMAIL_HOST', False):
     set_from_env('EMAIL_USE_TLS', bool_from_str)
     set_from_env('EMAIL_USE_SSL', bool_from_str)
 
+SYSTEM_EMAIL    = os.getenv('SYSTEM_EMAIL',    'modelreg@example.com')
+SYSTEM_OPERATOR = os.getenv('SYSTEM_OPERATOR', 'ModelReg Team')

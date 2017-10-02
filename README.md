@@ -162,6 +162,13 @@ you can change if you want:
     * `-e EMAIL_USE_SSL=true`
     * `-e EMAIL_USE_TLS=false`
 
+  * *System settings*: Set the following variables to configure the name
+    and email address of your application.
+
+    * `-e SYSTEM_EMAIL=system@example.com` - The email address that is used
+      as the sender of all notifications. Does not need to own a mailbox.
+    * `-e SYSTEM_OPERATOR="ModelReg Team"` - The name of your team. Is used
+      as the greetings line in emails
 
 ToDo
 ----

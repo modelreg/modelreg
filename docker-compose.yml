@@ -37,6 +37,8 @@ services:
       - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
+      - SYSTEM_OPERATOR=${SYSTEM_OPERATOR}
+      - SYSTEM_EMAIL=${SYSTEM_EMAIL}
   nginx:
     links:
       - app

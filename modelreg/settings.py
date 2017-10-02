@@ -132,4 +132,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'profile'
 
+SYSTEM_EMAIL    = 'modelreg@example.com'
+SYSTEM_OPERATOR = 'ModelReg Team'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+

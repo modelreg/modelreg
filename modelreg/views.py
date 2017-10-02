@@ -13,6 +13,7 @@ import qrcode
 
 from . import models
 
+from . import communication
 
 def found_info(req):
     """Info for someone who found a model
@@ -57,6 +58,8 @@ def found(req, ident, auth):
 
             msg.save()
 
+            communication.new_case(req, msg)
+
         return redirect('case_finder', ident=case.identifier)
 
     return render(req, 'found.html', {'public_profile': code})
@@ -89,6 +92,8 @@ def case_finder(req, ident):
         msg.message = req.POST['message']
         msg.save()
 
+        communication.notify_owner(req, msg)
+
     return render(req, 'case_finder.html', case_info(case))
 
 
@@ -105,6 +110,8 @@ def case_owner(req, pk):
         msg.from_owner = True
         msg.message = req.POST['message']
         msg.save()
+
+        communication.notify_finder(req, msg)
 
     return render(req, 'case_owner.html', case_info(case))
 

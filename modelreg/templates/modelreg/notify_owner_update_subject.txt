@@ -1,0 +1,4 @@
+{% load i18n %}
+{% blocktrans %}
+A new message from someone who found your model!
+{% endblocktrans %}
