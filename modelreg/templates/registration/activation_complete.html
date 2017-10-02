@@ -3,8 +3,9 @@
 {% block title %}{{block.super}}{% trans "Activation complete" %}{% endblock %}
 {% block content-header %}{% trans "Activation complete" %}{% endblock %}
 {% block content-main %}
+    {% url "auth_login" as login_url %}
     {% blocktrans %}
-    Thank you! Your account is now activated and you are able to <a href="{% url "auth_login" %}">Login</a>.
+    Thank you! Your account is now activated and you are able to <a href="{{login_url}}">Login</a>.
     {% endblocktrans %}
 {% endblock %}
 
