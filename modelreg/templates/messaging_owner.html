@@ -22,3 +22,18 @@
         </div>
     </form>
 {% endblock %}
+
+{% block message-list %}
+    {% for msg in messages %}
+    <div class="card case-message bubble {% if msg.from_owner %}owner right{%else%}finder left{%endif%}">
+        <div class="card-block">
+            <h4 class="card-title">{% if msg.from_owner %}{% trans 'You' %}{%else%}{% trans 'Finder' %}{%endif%}
+                <span class="timestamp">{{msg.timestamp}}</span>
+            </h4>
+        </div>
+        <div class="card-block">
+            <p class="card-text">{{msg.message|linebreaksbr}}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -93,8 +93,9 @@ def case_finder(req, ident):
         msg.save()
 
         communication.notify_owner(req, msg)
+        return redirect('case_finder', ident=case.identifier)
 
-    return render(req, 'case_finder.html', case_info(case))
+    return render(req, 'messaging_finder.html', case_info(case))
 
 
 def case_owner(req, pk):
@@ -113,7 +114,9 @@ def case_owner(req, pk):
 
         communication.notify_finder(req, msg)
 
-    return render(req, 'case_owner.html', case_info(case))
+        return redirect('case_owner', pk=case.pk)
+
+    return render(req, 'messaging_owner.html', case_info(case))
 
 
 def index(req):

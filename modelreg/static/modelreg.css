@@ -33,17 +33,6 @@ body {
     padding-right: 50px;
 }
 
-.case-message.finder::after {
-    font-family: FontAwesome;
-    content: "\f007";
-
-}
-
-.case-message.owner::before {
-    font-family: FontAwesome;
-    content: "\f1d8";
-}
-
 .card-title .timestamp {
     font-size: 0.7em;
     font-weight: normal;
@@ -88,4 +77,107 @@ body {
 
 .registration  input:last-child() {
     width: 30%;
+}
+
+
+.case-message {
+    border-width: 1px;
+    border-radius: 10px;
+    border-style: solid;
+    margin-bottom: 1em;
+    position: relative;
+}
+
+
+.bubble.right:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 60%;
+    width: 0;
+    height: 0;
+    border: 1.563em solid transparent;
+    border-left-color: inherit;
+    border-right: 0;
+    border-bottom: 0;
+    margin-top: -0.781em;
+    margin-right: -1.562em;
+}
+
+.bubble {
+    position: relative;
+    border-radius: 1em;
+}
+.bubble.right {
+    margin-left: 10em;
+    margin-right: 2em;
+}
+
+.bubble.left {
+    margin-right: 10em;
+    margin-left: 2em;
+}
+
+.bubble.left:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    width: 0;
+    height: 0;
+    border: 1.563em solid transparent;
+    border-right-color: inherit;
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -0.781em;
+    margin-left: -1.562em;
+}
+
+.bubble.owner {
+    border-color: red;
+}
+
+.bubble.finder {
+    border-color: green;
+}
+
+.case-message.finder .card-block:nth-child(1):before {
+    position: absolute;
+    top: 0.5em;
+    left: 2em;
+    font-family: FontAwesome;
+    content: "\f007";
+
+}
+
+.case-message.owner .card-block:nth-child(1):before {
+    position: absolute;
+    top: 0.5em;
+    left: 2em;
+    font-family: FontAwesome;
+    content: "\f1d8";
+}
+
+.new-message-text {
+    padding: 0.6em;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin-right: 2em;
+    margin-left: 10em;
+    height: 10em;
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+.new-message button {
+    float: right;
+    display: block;
+    margin-right: 2em;
+}
+
+.chat-pane {
+    border-right: 1px solid #eee;
+}
+.chat-sidebar {
 }
