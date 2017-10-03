@@ -3,24 +3,24 @@
 {% block title %}{{block.super}}{% trans "RC Model found" %}{% endblock %}
 {% block content-header %}{% trans "RC Model found" %}{% endblock %}
 {% block content-main %}
-    <div class="grid grid--row">
-    <div class="grid-cell">
-        {% for message in messages %}
-            message block ... no clue what CSS element to use and display
-            {{ message.message }}, {{ message.sender }}
+<div class="container">
+    <div class="row">
+    <div class="col-md-9 chat-pane">
+        {% block message-list %}
+        {% endblock %}
 
-        {% endfor %}
-        <form>
-            <div class="form-group">
-                <textarea placeholder="{% trans "What would you like to say?" %}" cols="50"
-                          rows="2"></textarea>
-
-                <button type="submit" class="btn btn-default">{% trans "Send message" %}</button>
-            </div>
+        <form method="POST" class="new-message">
+            {%csrf_token%}
+            <textarea class="bubble right new-message-text"
+                      name="message"
+                      placeholder="{% trans "What would you like to say?" %}"
+                      ></textarea>
+            <button type="submit" class="btn btn-primary">{% trans "Send message" %}</button>
         </form>
     </div>
-    <div class="grid-cell">
+    <div class="col-md-3 chat-sidebar">
         {% block messaging_options %}
-            </div>
         {% endblock %}
+    </div>
+</div>
 {% endblock %}
