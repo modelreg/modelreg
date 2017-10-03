@@ -1,7 +1,7 @@
 Model Reg - the voluntary RC model registry
 ===========================================
 
-We're some guys form Switzerland thinking about building some useful measure to
+We're some guys from Switzerland thinking about building some useful measure to
 counter the "Drone hate" and over-reaching regulation fantasies that are
 currently going on in some of our governments.
 
@@ -16,7 +16,7 @@ Here's a rough outline of what we're trying to build:
 * Access via QR code will also give you the ability to notify the owner if you
   found a model
 
-This will be targeted towards recular RC clubs / plane owners, RC drone and
+This will be targeted towards regular RC clubs / plane owners, RC drone and
 racing clubs etc, as they do have similar requirements/problems.
 
 The goal is to show to the government bodies that there is already a system in
