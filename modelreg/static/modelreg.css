@@ -57,3 +57,35 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+.registration input {
+    display: block;
+    margin-bottom: -0.5em;
+    width: 80%;
+
+}
+
+.registration label {
+    display: block;
+    width: 300px;
+    margin-bottom: -0.1em;
+}
+
+.registration .helptext {
+    display: block;
+    color: #999;
+    margin-top: -0.5em;
+    margin-bottom: 1.5em;
+}
+
+.registration .errorlist {
+    display: block;
+    background-color: #ffd999;
+    border: 1px solid #ffc14d;
+    border-radius: 3px;
+    width: 80%;
+}
+
+.registration  input:last-child() {
+    width: 30%;
+}

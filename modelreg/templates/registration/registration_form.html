@@ -3,7 +3,12 @@
 {% block title %}{{block.super}}{% trans "Register" %}{% endblock %}
 {% block content-header %}{% trans "Register" %}{% endblock %}
 {% block content-main %}
-<form method="POST">
+{%blocktrans%}
+<p>Sign up to get a registration for your RC models. You will get a sheet with
+QR codes for your models. So if it gets lost, the finder can let you know about
+it via this site.
+{%endblocktrans%}
+<form method="POST" class="registration">
     {% csrf_token %}
     {{ form }}
     <input type="submit">
