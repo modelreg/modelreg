@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: modelreg\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-04 10:25+0000\n"
-"PO-Revision-Date: 2017-10-04 08:02-0400\n"
+"PO-Revision-Date: 2017-10-04 08:11-0400\n"
 "Last-Translator: winged.ch <dave@winged.ch>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -425,7 +425,7 @@ msgstr "Ihr QR-Code"
 
 #: modelreg/templates/profile.html:37
 msgid "Reports"
-msgstr ""
+msgstr "Reporte"
 
 #: modelreg/templates/profile.html:43
 msgid "You never had a model reported here."
