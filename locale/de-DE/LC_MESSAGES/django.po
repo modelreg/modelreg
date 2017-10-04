@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: modelreg\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-04 10:25+0000\n"
-"PO-Revision-Date: 2017-10-04 08:11-0400\n"
+"PO-Revision-Date: 2017-10-04 08:21-0400\n"
 "Last-Translator: winged.ch <dave@winged.ch>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -371,7 +371,8 @@ msgstr ""
 #: modelreg/templates/modelreg/notify_owner_update_subject.txt:2
 msgid "\n"
 "A new message from someone who found your model!\n"
-msgstr ""
+msgstr "\n"
+"Eine neue Nachricht von jemandem der ihr Modell gefunden hat!\n"
 
 #: modelreg/templates/personal_nav.html:8
 msgid "Profile"
@@ -441,7 +442,8 @@ msgstr "Aktivierung komplett"
 msgid "\n"
 "    Thank you! Your account is now activated and you are able to <a href=\"%(login_url)s\">Login</a>.\n"
 "    "
-msgstr ""
+msgstr "\n"
+"Danke! Ihr Konto ist nun aktiviert und Sie können sich <a href=\"%(login_url)s\"> anmelden</a>.    "
 
 #: modelreg/templates/registration/activation_email.txt:3
 #, python-format
@@ -455,12 +457,22 @@ msgid "\n"
 "and it will expire in %(expiration_days)s days.\n\n"
 "Best regards,\n"
 "The %(domain)s system\n"
-msgstr ""
+msgstr "\n"
+"Hallo %(user)s\n\n"
+"Vielen Dank für die Registrierung auf\n"
+"%(domain)s! Um ihr Konto zu Aktivieren,\n"
+"klicken Sie bitte auf den folgenden Link:\n"
+"%(base_url)s%(path)s\n\n"
+"Ihr gewünschter Konto Name ist: %(user)s\n"
+"Der Aktivierung-Schlüssel ist %(activation_key)s\n"
+"und er wird in %(expiration_days)s ungültig.\n\n"
+"Freundliche Grüsse,\n"
+"Das %(domain)s System\n"
 
 #: modelreg/templates/registration/activation_email_subject.txt:2
 #, python-format
 msgid "%(domain)s activation (modelreg)"
-msgstr ""
+msgstr "%(domain)s Aktivierung (modelreg)"
 
 #: modelreg/templates/registration/login.html:19
 msgid "Sign in"
@@ -498,5 +510,6 @@ msgid "\n"
 "<p>Sign up to get a registration for your RC models. You will get a sheet with\n"
 "QR codes for your models. So if it gets lost, the finder can let you know about\n"
 "it via this site.\n"
-msgstr ""
+msgstr "\n"
+"<p>Anmelden, um eine Registrierung für Ihre RC-Modelle zu erhalten. Sie erhalten eine Blatt mit QR-Codes für Ihre Modelle. Falls es verloren geht, kann der Finder Sie über diese Website wissen lassen.\n"
 
