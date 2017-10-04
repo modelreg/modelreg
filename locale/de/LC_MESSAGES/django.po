@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-28 15:56+0000\n"
-"PO-Revision-Date: 2017-09-28 18:08+0200\n"
+"PO-Revision-Date: 2017-10-04 11:32+0200\n"
 "Last-Translator: David Vogt <david.vogt@adfinis-sygroup.ch>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: modelreg/models.py:42
 msgid "No Damage"
@@ -43,30 +43,45 @@ msgid ""
 "    <p>Here's a rough outline of what we're trying to build:\n"
 "    "
 msgstr ""
+"\n"
+"    <p>Wir sind ein paar Typen aus der Schweiz mit der Idee ein System zu "
+"entwickeln um dem allgemeine \\\"Drohnen Hass\\\" und der übertriebenen "
+"Registrations-Phantasien welche gewisse Regierungen, entgegen zu wirken.\n"
+"    <p>Hier eine kleine Übersicht was wir am bauen sind:\n"
+"    "
 
 #: modelreg/templates/about.html:11
 msgid ""
 "A web application where people can register themselves (voluntarily, address "
 "verification via physical letter)"
 msgstr ""
+"Eine Web-Applikation auf welcher sich die Leute selber registrieren können "
+"(freiwillig, Adressen-Verifizierung via Physikalischem Brief)"
 
 #: modelreg/templates/about.html:12
 msgid ""
 "Ability to print out a sheet with QR codes to stick to your model "
 "(potentially as-a-service for a small fee)"
 msgstr ""
+"Die Möglichkeit QR-Code Klebeetiketten auszudrucken um am Modell anzubringen "
+"(Möglich als Dienstleistung gegen eine kleine Gebühr)"
 
 #: modelreg/templates/about.html:13
 msgid ""
 "The data will be fully encrypted. Part of the QR code URL would be a random "
 "key to decrypt part of your information (for example phone number and name)"
 msgstr ""
+"Alle Daten sind voll verschlüsselt. Ein Teil des QR-Codes ist ein zufällig "
+"generierter Schlüssel, welcher zum entschlüsseln der Daten benötigt wird "
+"(wie zum Beispiel die Telefonnummer und der Name)"
 
 #: modelreg/templates/about.html:14
 msgid ""
 "Access via QR code will also give you the ability to notify the owner if you "
 "found a model"
 msgstr ""
+"Zugang zum QR-Code ermöglicht auch, dass du informiert wirst, wenn jemand "
+"dein Modell gefunden hat"
 
 #: modelreg/templates/about.html:16
 msgid ""
@@ -84,6 +99,21 @@ msgid ""
 "easy, with only a few standard django commands.\n"
 "    "
 msgstr ""
+"\n"
+"    <p>Die primären Zielgruppen sind Modellbau Vereine / Flugzeug Besitzer, "
+"Drohnen und FPV Racing Clubs usw., da diese die selben Anforderungen und "
+"Probleme haben.\n"
+"    <p>Das Ziel ist es, den Regulierungs Behörden zu Zeigen, dass es bereits "
+"ein System gibt, welches die realen Szenarien abdeckt für die "
+"Strafverfolgung WENN etwas passiert und somit eine Realistische Alternative "
+"präsentiert zu den Ideen an jeder Drohne einen Transponder anzubringen wie "
+"dies zum Beispiel von DJI vor kurzem vorgeschlagen wurde (auch bei unserer "
+"Regierung wird mit dieser Idee gespielt)\n"
+"    <p>Wir bauen diese Lösung gezielt als freie Software, so dass alle "
+"Vereine diese selber betreiben können falls dies gewünscht wird. Aus diesem "
+"Grund, benutzen wir keine zu Komplizierten Technologien damit das System "
+"möglichst einfach selber betrieben werden kann. Im minimalen Fall mit "
+"wenigen Standard django Befehlen."
 
 #: modelreg/templates/base.html:24
 msgid "Toggle navigation"
@@ -113,7 +143,7 @@ msgstr "RC-Modell gefunden"
 #: modelreg/templates/case_finder.html:3 modelreg/templates/case_finder.html:4
 #: modelreg/templates/case_owner.html:3 modelreg/templates/case_owner.html:4
 msgid "Case Type: "
-msgstr ""
+msgstr "Fall Typ: "
 
 #: modelreg/templates/case_finder.html:16
 msgid "Owner"
@@ -319,10 +349,22 @@ msgid ""
 "        cooperate, then we will take it further.\n"
 "    "
 msgstr ""
+"\n"
+"        Du kannst mit dem Besitzers des Mudells\n"
+"        auf dieser Seite sprechen. Wenn irgendwelche\n"
+"        Probleme auftreten, verwende die Funktionen rechts.\n"
+"\n"
+"        Wohlgemerkt, ModelREG ist nicht\n"
+"        verantwortlich für entstandene Schäden\n"
+"        welche durch das Modell entstanden sind.\n"
+"        Versuche mit dem Besitzer zu Kommunizieren\n"
+"        oder trete mit uns in Kontakt wenn weitere\n"
+"        Schritte nötig sind.\n"
+"    "
 
 #: modelreg/templates/messaging_finder.html:19
 msgid "Owner does not want to pay for damage"
-msgstr ""
+msgstr "Besitzer will nicht für die Schäden aufkommen"
 
 #: modelreg/templates/messaging_finder.html:20
 #: modelreg/templates/messaging_owner.html:20
@@ -352,10 +394,22 @@ msgid ""
 "        cooperate, then we will take it further.\n"
 "    "
 msgstr ""
+"\n"
+"        Du kannst mit dem Finder auf dieser\n"
+"        Seite kommunizieren. Wenn Probleme\n"
+"        entstehen verwende die Funktionen rechts.\n"
+"\n"
+"        Wohlgemerkt, ModelREG ist nicht\n"
+"        verantwortlich für entstandene Schäden\n"
+"        welche durch das Modell entstanden sind.\n"
+"        Versuche mit dem Besitzer zu Kommunizieren\n"
+"        oder trete mit uns in Kontakt wenn weitere\n"
+"        Schritte nötig sind.\n"
+"    "
 
 #: modelreg/templates/messaging_owner.html:19
 msgid "Finder demands undue compensation"
-msgstr ""
+msgstr "Finder verlangt übertriebene Kompensation"
 
 #: modelreg/templates/personal_nav.html:8
 msgid "Profile"
@@ -410,16 +464,16 @@ msgstr "Ihr QR-Code"
 
 #: modelreg/templates/profile.html:37
 msgid "Reports:"
-msgstr ""
+msgstr "Reporte:"
 
 #: modelreg/templates/profile.html:43
 msgid "You never had a model reported here."
-msgstr ""
+msgstr "Du hast noch keinen Modell-Report hier."
 
 #: modelreg/templates/registration/activation_complete.html:3
 #: modelreg/templates/registration/activation_complete.html:4
 msgid "Activation complete"
-msgstr ""
+msgstr "Aktivierung komplett"
 
 #: modelreg/templates/registration/activation_complete.html:6
 msgid ""
@@ -427,6 +481,9 @@ msgid ""
 "    Well done, thanks!\n"
 "    "
 msgstr ""
+"\n"
+"    Super, vielen Dank!\n"
+"    "
 
 #: modelreg/templates/registration/login.html:19
 msgid "Sign in"
@@ -442,6 +499,9 @@ msgid ""
 "    Thanks for visiting. You're now logged out. See you soon!\n"
 "    "
 msgstr ""
+"\n"
+"    Vielen dank für den Besuch. Du bist nun ausgeloggt. Bis bald!\n"
+"    "
 
 #: modelreg/templates/registration/registration_complete.html:3
 #: modelreg/templates/registration/registration_complete.html:4
@@ -455,6 +515,11 @@ msgid ""
 "    verification. Please find it and click on the link.\n"
 "    "
 msgstr ""
+"\n"
+"    Dein Account wurde erstellt. Wir haben Dir eine E-Mail gesendet\n"
+"    um die Verifizierung abzuschliessen. Bitte klicke den Link in jener E-"
+"Mail.\n"
+"    "
 
 #~ msgid "Password"
 #~ msgstr "Passwort"
