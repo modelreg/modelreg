@@ -1,1 +1,3 @@
-files: []
+files:
+  - source: '*.[ph][ty]*'
+    translation: /locale/%locale%/django.po
