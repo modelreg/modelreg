@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: modelreg\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-04 10:25+0000\n"
-"PO-Revision-Date: 2017-10-04 07:11-0400\n"
+"PO-Revision-Date: 2017-10-04 08:02-0400\n"
 "Last-Translator: winged.ch <dave@winged.ch>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -64,7 +64,10 @@ msgid "\n"
 "    <p>The goal is to show to the government bodies that there is already a system in place that satisfies their actual requirements of criminal prosecution IF something happens and give a reasonable alternative to the transponder idea that DJI recently proposed (some of the guys in our civil aviation government body are playing with that idea as well)\n"
 "    <p>We're explicitly building this as free software, so clubs all over the world could run this themselves if they want. For the same reason, we're not using anything too new or fancy, so deployments should be simple and easy, with only a few standard django commands.\n"
 "    "
-msgstr ""
+msgstr "\n"
+"    <p>Die primären Zielgruppen sind Modellbau Vereine / Flugzeug Besitzer, Drohnen und FPV Racing Clubs usw., da diese die selben Anforderungen und Probleme haben.\n"
+"    <p>Das Ziel ist es, den Regulierungs Behörden zu Zeigen, dass es bereits ein System gibt, welches die realen Szenarien abdeckt für die Strafverfolgung WENN etwas passiert und somit eine Realistische Alternative präsentiert zu den Ideen an jeder Drohne einen Transponder anzubringen wie dies zum Beispiel von DJI vor kurzem vorgeschlagen wurde (auch bei unserer Regierung wird mit dieser Idee gespielt)\n"
+"    <p>Wir bauen diese Lösung gezielt als freie Software, so dass alle Vereine diese selber betreiben können falls dies gewünscht wird. Aus diesem Grund, benutzen wir keine zu Komplizierten Technologien damit das System möglichst einfach selber betrieben werden kann. Im minimalen Fall mit wenigen Standard django Befehlen.    "
 
 #: modelreg/templates/base.html:24
 msgid "Toggle navigation"
@@ -76,7 +79,7 @@ msgstr "Haben Sie ein Modellflugzeug, Drohne oder Multikopter gefunden?"
 
 #: modelreg/templates/base.html:42
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: modelreg/templates/base.html:48
 msgid "About"
@@ -236,7 +239,18 @@ msgid "\n"
 "        let us know if the owner does not\n"
 "        cooperate, then we will take it further.\n"
 "    "
-msgstr ""
+msgstr "\n"
+"        Sie können mit dem Besitzers des Modells\n"
+"        auf dieser Seite sprechen. Wenn irgendwelche\n"
+"        Probleme auftreten, verwenden Sie die\n"
+"        Funktionen rechts.\n\n"
+"        Wohlgemerkt, ModelREG ist nicht\n"
+"        verantwortlich für entstandene Schäden\n"
+"        welche durch das Modell entstanden sind.\n"
+"        Versuchen Sie mit dem Besitzer zu\n"
+"        Kommunizieren oder treten Sie mit uns in\n"
+"        Kontakt wenn weitere Schritte nötig sind.\n"
+"    "
 
 #: modelreg/templates/messaging_finder.html:19
 msgid "Owner does not want to pay for damage"
@@ -276,7 +290,18 @@ msgid "\n"
 "        let us know if the owner does not\n"
 "        cooperate, then we will take it further.\n"
 "    "
-msgstr ""
+msgstr "\n"
+"        Sie können mit dem Finder auf dieser\n"
+"        Seite kommunizieren. Wenn Probleme\n"
+"        auftreten, verwende Sie die Funktionen\n"
+"        rechts.\n\n"
+"        Wohlgemerkt, ModelREG ist nicht\n"
+"        verantwortlich für entstandene Schäden\n"
+"        welche durch das Modell entstanden sind.\n"
+"        Versuchen Sie mit dem Besitzer zu\n"
+"        Kommunizieren oder treten Sie mit uns in\n"
+"        Kontakt wenn weitere Schritte nötig sind.\n"
+"    "
 
 #: modelreg/templates/messaging_owner.html:19
 msgid "Finder demands undue compensation"
@@ -284,7 +309,7 @@ msgstr "Finder verlangt übertriebene Kompensation"
 
 #: modelreg/templates/messaging_owner.html:30
 msgid "Finder"
-msgstr ""
+msgstr "Finder"
 
 #: modelreg/templates/modelreg/notify_finder_found.txt:2
 #, python-format
