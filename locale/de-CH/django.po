@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{block.super}}{% trans "Registration complete" %}{% endblock %}
+{% block content-header %}{% trans "Registration complete" %}{% endblock %}
+{% block content-main %}
+    {% blocktrans %}
+    Your account has been created. We've sent you an email to complete
+    verification. Please find it and click on the link.
+    {% endblocktrans %}
+{% endblock %}
