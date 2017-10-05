@@ -1,6 +1,8 @@
 FROM python:3
 WORKDIR /usr/src/app
 
+RUN apt-get update
+RUN apt-get install gettext -y
 COPY requirements.txt /usr/src/app/requirements.txt
 RUN wget https://github.com/vhf/confusable_homoglyphs/raw/master/confusables.json
 RUN wget https://github.com/vhf/confusable_homoglyphs/raw/master/categories.json
@@ -18,3 +20,5 @@ COPY scripts/boot.sh /usr/src/app/boot.sh
 COPY manage.py /usr/src/app/
 
 COPY modelreg  /usr/src/app/modelreg
+RUN python manage.py makemessages
+RUN python manage.py compilemessages
