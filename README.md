@@ -44,6 +44,13 @@ Contributing
 Please talk to Marc Urben or David Vogt if you have an idea. Then the standard
 rules apply: Fork, send a PR/MR, discuss, and we'll be happy to merge.
 
+Translation
+-----------
+
+We use crowdin.com for translation. If you want to help us to translate
+ModelREG into your language, head over to
+https://crowdin.com/project/modelreg and start working :)
+
 Development
 -----------
 
