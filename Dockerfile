@@ -19,6 +19,6 @@ CMD bash /usr/src/app/boot.sh
 COPY scripts/boot.sh /usr/src/app/boot.sh
 COPY manage.py /usr/src/app/
 
+COPY locale    /usr/src/app/locale
 COPY modelreg  /usr/src/app/modelreg
-RUN python manage.py makemessages
 RUN python manage.py compilemessages
