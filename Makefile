@@ -5,4 +5,5 @@ help:  ## Show help for the available Make targets
 
 update-translations:  ## Rebuild translation files
 	@./manage.py makemessages --keep-pot
+	@sed -i 's/^"POT-Creation-Date:.*//' locale/django.pot
 	@./manage.py compilemessages
