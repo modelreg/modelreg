@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: modelreg\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-04 10:25+0000\n"
-"PO-Revision-Date: 2017-10-04 11:37-0400\n"
+"PO-Revision-Date: 2017-10-05 07:03-0400\n"
 "Last-Translator: winged.ch <dave@winged.ch>\n"
 "Language-Team: German, Switzerland\n"
 "Language: de_CH\n"
@@ -38,7 +38,7 @@ msgid "\n"
 "    <p>Here's a rough outline of what we're trying to build:\n"
 "    "
 msgstr "\n"
-"<p>Wir sind ein paar Leute aus der Schweiz mit der Idee ein System zu entwickeln um dem allgemeine \\\"Drohnen Hass\\\" und der übertriebenen Registrations-Phantasien welche gewisse Regierungen, entgegen zu wirken.\n"
+"<p>Wir sind ein paar Leute aus der Schweiz mit der Idee ein System zu entwickeln um dem allgemeine \\\"Drohnen Hass\\\" und der übertriebenen Registrations-Phantasien gewisser Regierungen entgegen zu wirken.\n"
 "    <p>Hier eine kleine Übersicht was wir am bauen sind:\n"
 "    "
 
@@ -65,9 +65,9 @@ msgid "\n"
 "    <p>We're explicitly building this as free software, so clubs all over the world could run this themselves if they want. For the same reason, we're not using anything too new or fancy, so deployments should be simple and easy, with only a few standard django commands.\n"
 "    "
 msgstr "\n"
-"    <p>Die primären Zielgruppen sind Modellbau Vereine / Flugzeug Besitzer, Drohnen und FPV Racing Clubs usw., da diese die selben Anforderungen und Probleme haben.\n"
-"    <p>Das Ziel ist es, den Regulierungs Behörden zu Zeigen, dass es bereits ein System gibt, welches die realen Szenarien abdeckt für die Strafverfolgung WENN etwas passiert und somit eine Realistische Alternative präsentiert zu den Ideen an jeder Drohne einen Transponder anzubringen wie dies zum Beispiel von DJI vor kurzem vorgeschlagen wurde (auch bei unserer Regierung wird mit dieser Idee gespielt)\n"
-"    <p>Wir bauen diese Lösung gezielt als freie Software, so dass alle Vereine diese selber betreiben können falls dies gewünscht wird. Aus diesem Grund, benutzen wir keine zu Komplizierten Technologien damit das System möglichst einfach selber betrieben werden kann. Im minimalen Fall mit wenigen Standard django Befehlen.    "
+"    <p>Die primären Zielgruppen sind Modellbau Vereine / Flugzeug Besitzer, Drohnen und FPV Racing Clubs etc., da diese die selben Anforderungen und Probleme haben.\n"
+"    <p>Das Ziel ist es, den Regulierungsbehörden zu Zeigen, dass es bereits ein System gibt, welches die realen Szenarien abdeckt für die Strafverfolgung WENN etwas passiert und somit eine Realistische Alternative präsentiert zu den Ideen an jeder Drohne einen Transponder anzubringen wie dies zum Beispiel von DJI vor kurzem vorgeschlagen wurde (auch bei unserer Regierung wird mit dieser Idee gespielt)\n"
+"    <p>Wir bauen diese Lösung gezielt als freie Software, so dass alle Vereine diese selber betreiben können falls dies gewünscht wird. Aus diesem Grund, benutzen wir keine zu Komplizierten Technologien damit das System möglichst einfach selber betrieben werden kann. Im minimalen Fall mit wenigen Standard Django Befehlen.    "
 
 #: modelreg/templates/base.html:24
 msgid "Toggle navigation"
@@ -75,11 +75,11 @@ msgstr "Navigation verstecken/anzeigen"
 
 #: modelreg/templates/base.html:36
 msgid "Found an airplane, drone, multicopter?"
-msgstr "Haben Sie ein Modellflugzeug, Drohne oder Multikopter gefunden?"
+msgstr "Haben Sie ein Modellflugzeug, Drohne oder Multicopter gefunden?"
 
 #: modelreg/templates/base.html:42
 msgid "GitHub"
-msgstr "GitHub"
+msgstr "Github"
 
 #: modelreg/templates/base.html:48
 msgid "About"
@@ -147,20 +147,20 @@ msgid "\n"
 msgstr "\n"
 "Wir senden Ihnen eine Email mit einem Link auf diese Seite. Somit können Sie die Diskussion\n"
 "weiter verfolgen oder eskalieren, wenn sich der Besitzer nicht bei Ihnen meldet, oder wenn\n"
-"Sie sich nicht einig werden (z. B. bei Schäden).\n"
+"Sie sich nicht einig werden, z. B. bei Schäden.\n"
 "            "
 
 #: modelreg/templates/found.html:54
 msgid "Email address"
-msgstr "Mailadresse"
+msgstr "Emailadresse"
 
 #: modelreg/templates/found.html:56 modelreg/templates/found.html:62
 msgid "Enter your email address"
-msgstr "Bitte Mailadresse eingeben"
+msgstr "Bitte Emailadresse eingeben"
 
 #: modelreg/templates/found.html:60
 msgid "Confirm email address"
-msgstr "Mailadresse bestätigen"
+msgstr "Emailadresse bestätigen"
 
 #: modelreg/templates/found.html:65 modelreg/templates/messaging_base.html:18
 msgid "Send message"
@@ -477,7 +477,7 @@ msgstr "Sie haben noch keinen Modell-Report hier."
 #: modelreg/templates/registration/activation_complete.html:3
 #: modelreg/templates/registration/activation_complete.html:4
 msgid "Activation complete"
-msgstr "Registration vollständig"
+msgstr "Aktivierung vollständig"
 
 #: modelreg/templates/registration/activation_complete.html:7
 #, python-format
@@ -514,7 +514,7 @@ msgstr "\n"
 #: modelreg/templates/registration/activation_email_subject.txt:2
 #, python-format
 msgid "%(domain)s activation (modelreg)"
-msgstr "%(domain)s Aktivierung (modelreg)"
+msgstr "%(domain)s Aktivierung (ModelREG)"
 
 #: modelreg/templates/registration/login.html:19
 msgid "Sign in"
@@ -535,7 +535,7 @@ msgstr "\n"
 #: modelreg/templates/registration/registration_complete.html:3
 #: modelreg/templates/registration/registration_complete.html:4
 msgid "Registration complete"
-msgstr "Registration vollständig"
+msgstr "Registrierung vollständig"
 
 #: modelreg/templates/registration/registration_complete.html:6
 msgid "\n"
