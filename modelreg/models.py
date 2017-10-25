@@ -50,6 +50,10 @@ class Case(models.Model):
     identifier     = models.CharField(max_length=15, default=make_identifier, blank=True)
     timestamp      = models.DateTimeField(auto_now_add=True)
 
+    owner_resolved  = models.BooleanField(default=False)
+    finder_resolved = models.BooleanField(default=False)
+    admin_informed  = models.BooleanField(default=False)
+
     reporter_email = models.EmailField()
 
     class Meta:
@@ -63,6 +67,7 @@ class CaseMessage(models.Model):
     case       = models.ForeignKey(Case, related_name = 'messages')
     timestamp  = models.DateTimeField(auto_now_add=True)
     from_owner = models.BooleanField()
+    for_admin  = models.BooleanField(default=False)
     message    = models.TextField()
 
     class Meta:
