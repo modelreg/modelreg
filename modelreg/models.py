@@ -64,11 +64,23 @@ class Case(models.Model):
 
 class CaseMessage(models.Model):
 
+    SENDER_CHOICES=(
+        ('admin', _('Administrator')),
+        ('finder', _('Finder')),
+        ('owner', _('Owner')),
+    )
+
     case       = models.ForeignKey(Case, related_name = 'messages')
     timestamp  = models.DateTimeField(auto_now_add=True)
-    from_owner = models.BooleanField()
     for_admin  = models.BooleanField(default=False)
     message    = models.TextField()
+
+    sender = models.CharField(max_length=10, choices=SENDER_CHOICES)
+
+    @property
+    def from_owner(self):
+        return self.sender == 'owner'
+
 
     class Meta:
         indexes = [

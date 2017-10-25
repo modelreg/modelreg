@@ -51,18 +51,13 @@ def found(req, ident, auth):
         case.save()
 
         if req.POST['message']:
-            msg = models.CaseMessage()
-            msg.case = case
-            msg.from_owner = True
-            msg.message = req.POST['message']
-
-            msg.save()
-
+            add_message(req, case, 'finder')
             communication.new_case(req, msg)
 
         return redirect('case_finder', ident=case.identifier)
 
     return render(req, 'found.html', {'public_profile': code})
+
 
 def case_info(case):
     "Return a dict suitable for the case_* views as rendering context"
@@ -77,21 +72,19 @@ def case_info(case):
     }
 
 
-def case_finder(req, ident):
-    case = models.Case.objects.get(identifier=ident)
+def add_message(req, case, sender):
+    msg = models.CaseMessage()
+    msg.case = case
+    msg.sender = sender
+    msg.message = req.POST['message']
+    msg.save()
 
-    if not case.model_owner == req.user:
-        # TODO: reject request; owner view does not match
-        # current user
-        pass
+
+def case_finder(req, ident):
+    case = get_object_or_404(models.Case, identifier=ident)
 
     if req.POST and req.POST['message']:
-        msg = models.CaseMessage()
-        msg.case = case
-        msg.from_owner = False
-        msg.message = req.POST['message']
-        msg.save()
-
+        add_message(req, case, 'finder')
         communication.notify_owner(req, msg)
         return redirect('case_finder', ident=case.identifier)
 
@@ -99,19 +92,10 @@ def case_finder(req, ident):
 
 
 def case_owner(req, pk):
-    case = models.Case.objects.get(pk=pk)
-    if not case.model_owner == req.user:
-        # TODO: reject request; owner view does not match
-        # current user
-        pass
+    case = get_object_or_404(models.Case, pk=pk, model_owner=req.user)
 
     if req.POST and req.POST['message']:
-        msg = models.CaseMessage()
-        msg.case = case
-        msg.from_owner = True
-        msg.message = req.POST['message']
-        msg.save()
-
+        add_message(req, case, 'owner')
         communication.notify_finder(req, msg)
 
         return redirect('case_owner', pk=case.pk)
