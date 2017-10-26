@@ -79,6 +79,23 @@ def add_message(req, case, sender, for_admin=False):
     msg.for_admin = for_admin
     msg.message = req.POST['message']
     msg.save()
+
+    if for_admin:
+        # If a message for the admin is generated, admins
+        # must be notified. Setting the flag will make the
+        # case show up in the admin's view.
+        # TODO: send email to administrator(s)
+        case.admin_informed = True
+        case.save()
+        communication.notify_admin(req, msg, sender)
+    elif sender == 'finder':
+        communication.notify_owner(req, msg)
+    elif sender == 'owner':
+        communication.notify_finder(req, msg)
+    elif sender == 'admin':
+        communication.notify_finder(req, msg)
+        communication.notify_owner(req, msg)
+
     return msg
 
 
@@ -89,7 +106,6 @@ def case_finder(req, ident):
         for_admin = req.POST['action'] == 'escalate'
 
         msg = add_message(req, case, 'finder', for_admin)
-        communication.notify_owner(req, msg)
         return redirect('case_finder', ident=case.identifier)
 
     return render(req, 'messaging_finder.html', case_info(case))
@@ -102,7 +118,18 @@ def case_owner(req, pk):
         for_admin = req.POST['action'] == 'escalate'
         msg = add_message(req, case, 'owner', for_admin)
 
-        communication.notify_finder(req, msg)
+
+        return redirect('case_owner', pk=case.pk)
+
+    return render(req, 'messaging_owner.html', case_info(case))
+
+
+def case_admin(req, pk):
+    # TODO: enforce admin access
+    case = get_object_or_404(models.Case, pk=pk, model_owner=req.user)
+
+    if req.POST and req.POST['message']:
+        msg = add_message(req, case, 'admin')
 
         return redirect('case_owner', pk=case.pk)
 

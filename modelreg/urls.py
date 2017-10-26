@@ -30,6 +30,7 @@ urlpatterns = [
 
     url(r'^c/(?P<ident>[\w\d]+)', views.case_finder, name='case_finder'),
     url(r'^oc/(?P<pk>\d+)',  views.case_owner, name='case_owner'),
+    url(r'^caseadmin/(?P<pk>\d+)',  views.case_admin, name='case_admin'),
 
     url(r'^f/(?P<ident>[\w\d]+)\.(?P<auth>[\w\d]+)',  views.found, name='found'),
     url(r'^found/',  views.found_info, name='found_info'),

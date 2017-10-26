@@ -105,6 +105,13 @@ class Case(models.Model):
 
 class CaseMessage(models.Model):
 
+    # Translators: the following no-op line ensures that the triggered_by
+    # values are properly translated, as they normally come out of a variable.
+    # Should be translated to the same values as the SENDER_CHOICES text below.
+    _('admin')
+    _('finder')
+    _('owner')
+
     SENDER_CHOICES=(
         ('admin', _('Administrator')),
         ('finder', _('Finder')),
