@@ -14,28 +14,24 @@
         let us know if the owner does not
         cooperate, then we will take it further.
     {% endblocktrans %}
-    <form>
-        <div class="form-group">
-            {% if case.can_finder_escalate %}
-            <button type="submit" class="btn btn-default">{% trans "Owner does not want to pay for damage" %}</button>
-            <button type="submit" class="btn btn-default">{% trans "Help, owner did not reply" %}</button>
-            {% endif %}
+    <div class="form-group">
+        {% if case.can_finder_escalate %}
+            <button
+                data-toggle="modal" data-target="#escalate-dialog"
+                class="btn btn-default">{% trans "Request help" %}</button>
+        {% include "modelreg/escalate_dialog.html" %}
+        {% endif %}
+        <form method="POST">
+            {%csrf_token%}
+            <input type="hidden" name="action" value="resolve">
             <button type="submit" class="btn btn-default">{% trans "Case closed, all good" %}</button>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}
+
 
 {% block message-list %}
     {% for msg in messages %}
-    <div class="card case-message bubble {% if msg.from_owner %}owner left{%else%}finder right{%endif%}">
-        <div class="card-block">
-            <h4 class="card-title">{% if msg.from_owner %}{% trans 'Owner' %}{%else%}{% trans 'You' %}{%endif%}
-                <span class="timestamp">{{msg.timestamp}}</span>
-            </h4>
-        </div>
-        <div class="card-block">
-            <p class="card-text">{{msg.message|linebreaksbr}}</p>
-        </div>
-    </div>
+    {% include "modelreg/single_message.html" with user='finder' %}
     {% endfor %}
 {% endblock %}

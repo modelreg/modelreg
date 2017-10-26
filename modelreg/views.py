@@ -51,7 +51,7 @@ def found(req, ident, auth):
         case.save()
 
         if req.POST['message']:
-            add_message(req, case, 'finder')
+            msg = add_message(req, case, 'finder')
             communication.new_case(req, msg)
 
         return redirect('case_finder', ident=case.identifier)
@@ -72,19 +72,23 @@ def case_info(case):
     }
 
 
-def add_message(req, case, sender):
+def add_message(req, case, sender, for_admin=False):
     msg = models.CaseMessage()
     msg.case = case
     msg.sender = sender
+    msg.for_admin = for_admin
     msg.message = req.POST['message']
     msg.save()
+    return msg
 
 
 def case_finder(req, ident):
     case = get_object_or_404(models.Case, identifier=ident)
 
     if req.POST and req.POST['message']:
-        add_message(req, case, 'finder')
+        for_admin = req.POST['action'] == 'escalate'
+
+        msg = add_message(req, case, 'finder', for_admin)
         communication.notify_owner(req, msg)
         return redirect('case_finder', ident=case.identifier)
 
@@ -95,7 +99,9 @@ def case_owner(req, pk):
     case = get_object_or_404(models.Case, pk=pk, model_owner=req.user)
 
     if req.POST and req.POST['message']:
-        add_message(req, case, 'owner')
+        for_admin = req.POST['action'] == 'escalate'
+        msg = add_message(req, case, 'owner', for_admin)
+
         communication.notify_finder(req, msg)
 
         return redirect('case_owner', pk=case.pk)

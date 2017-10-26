@@ -170,6 +170,17 @@ body {
     margin-bottom: 1em;
 }
 
+.for-admin {
+    background-color: #ffeeee;
+}
+
+.note-admin-only {
+    border-width: 0px 0px 0px 3px;
+    border-style: solid;
+    border-color: #ffaaaa;
+    padding-left: 0.5em;
+}
+
 .new-message button {
     float: right;
     display: block;
