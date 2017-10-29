@@ -4,10 +4,14 @@
 {% block content-header %}{% trans "Admin messaging" %}{% endblock %}
 {% block messaging_options %}
     <h4>Owner information</h4>
-    {{ owner_profile }}
+    {{ case.model_owner.first_name }} {{ case.model_owner.last_name }}
+    ({{ case.model_owner.username }})
+    <hr>
+    {{case.model_owner.public_profile.public_info|linebreaksbr }}
 
     <h4>Finder information</h4>
-    {{ finder_profile }}
+    {{ case.reporter_email }}
+    <hr>
 
     <form>
         <div class="form-group">

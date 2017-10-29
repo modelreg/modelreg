@@ -73,7 +73,7 @@ def _notify(request, msg, recipient, template_prefix='notify_owner', **kwargs):
         'operator': settings.SYSTEM_OPERATOR,
 
         'owner_link':  _uri(request, 'case_owner',  msg.case.pk),
-        'admin_link':  _uri(request, 'case_admin',  msg.case.pk),
+        'admin_link':  _uri(request, 'mod_case',  msg.case.pk),
         'finder_link': _uri(request, 'case_finder', msg.case.identifier),
     })
 

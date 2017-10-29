@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
@@ -84,7 +85,6 @@ def add_message(req, case, sender, for_admin=False):
         # If a message for the admin is generated, admins
         # must be notified. Setting the flag will make the
         # case show up in the admin's view.
-        # TODO: send email to administrator(s)
         case.admin_informed = True
         case.save()
         communication.notify_admin(req, msg, sender)
@@ -124,16 +124,25 @@ def case_owner(req, pk):
     return render(req, 'messaging_owner.html', case_info(case))
 
 
-def case_admin(req, pk):
-    # TODO: enforce admin access
-    case = get_object_or_404(models.Case, pk=pk, model_owner=req.user)
+@staff_member_required
+def mod_case(req, pk):
+    case = get_object_or_404(models.Case, pk=pk, admin_informed=True)
 
     if req.POST and req.POST['message']:
         msg = add_message(req, case, 'admin')
-
         return redirect('case_owner', pk=case.pk)
 
-    return render(req, 'messaging_owner.html', case_info(case))
+    info = case_info(case)
+
+    return render(req, 'messaging_admin.html', info)
+
+
+@staff_member_required
+def mod_overview(req):
+
+    cases = models.Case.objects.filter(admin_informed=True) #.order_by('-messages__timestamp').distinct()
+
+    return render(req, 'mod_overview.html', {'cases':cases})
 
 
 def index(req):
