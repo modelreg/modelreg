@@ -2,10 +2,12 @@
 
 """Documentation about the module... may be multi-line"""
 
+from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.conf import settings
+from django.contrib.auth.models import User
 
 def _uri(request, view, *args, **kwargs):
     return request.build_absolute_uri(reverse(view, args=args, kwargs=kwargs))
@@ -43,17 +45,38 @@ def notify_finder(request, msg, tag='update'):
         'notify_finder_%s' % tag)
 
 
-def _notify(request, msg, recipient, template_prefix='notify_owner'):
+def notify_admin(request, msg, triggered_by):
+    """Notify the admin that a case has been escalated.
 
-    context = {
-        'case':    msg.case,
-        'message': msg.message,
-        'owner':   msg.case.model_owner,
+    Pass in a request and a CaseMessage as parameters.
+    """
+    admins = User.objects.filter(is_superuser=True)
+
+    for admin in admins:
+        _notify(
+            request,
+            msg,
+            admin.email,
+            template_prefix='notify_admin',
+            triggered_by=_(triggered_by)
+        )
+
+
+def _notify(request, msg, recipient, template_prefix='notify_owner', **kwargs):
+
+    context = {}
+    context.update(kwargs)
+    context.update({
+        'case':     msg.case,
+        'message':  msg.message,
+        'owner':    msg.case.model_owner,
         'operator': settings.SYSTEM_OPERATOR,
 
         'owner_link':  _uri(request, 'case_owner',  msg.case.pk),
+        'admin_link':  _uri(request, 'mod_case',  msg.case.pk),
         'finder_link': _uri(request, 'case_finder', msg.case.identifier),
-    }
+    })
+
 
     subject = render_to_string('modelreg/%s_subject.txt' % template_prefix,
                                context)

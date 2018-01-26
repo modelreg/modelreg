@@ -1,0 +1,20 @@
+{% load i18n %}
+{% blocktrans %}
+Hi there!
+
+The following case requires your attention. The {{triggered_by}} escalated the
+case to the admins, so you should take a look at it. Here's what the user
+wrote:
+
+------------------------ 8< ----------------------
+{{message}}
+------------------------ >8 ----------------------
+
+
+Open this link to respond:
+{{admin_link}}
+Note that replies to this email will not be read, so use the link instead.
+
+Best, {{operator}}
+
+{% endblocktrans %}

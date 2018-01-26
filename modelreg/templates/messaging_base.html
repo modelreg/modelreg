@@ -11,6 +11,7 @@
 
         <form method="POST" class="new-message">
             {%csrf_token%}
+            <input type="hidden" name="action" value="message">
             <textarea class="bubble right new-message-text"
                       name="message"
                       placeholder="{% trans "What would you like to say?" %}"

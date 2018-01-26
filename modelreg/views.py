@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
@@ -51,18 +52,13 @@ def found(req, ident, auth):
         case.save()
 
         if req.POST['message']:
-            msg = models.CaseMessage()
-            msg.case = case
-            msg.from_owner = True
-            msg.message = req.POST['message']
-
-            msg.save()
-
+            msg = add_message(req, case, 'finder')
             communication.new_case(req, msg)
 
         return redirect('case_finder', ident=case.identifier)
 
     return render(req, 'found.html', {'public_profile': code})
+
 
 def case_info(case):
     "Return a dict suitable for the case_* views as rendering context"
@@ -77,46 +73,76 @@ def case_info(case):
     }
 
 
-def case_finder(req, ident):
-    case = models.Case.objects.get(identifier=ident)
+def add_message(req, case, sender, for_admin=False):
+    msg = models.CaseMessage()
+    msg.case = case
+    msg.sender = sender
+    msg.for_admin = for_admin
+    msg.message = req.POST['message']
+    msg.save()
 
-    if not case.model_owner == req.user:
-        # TODO: reject request; owner view does not match
-        # current user
-        pass
+    if for_admin:
+        # If a message for the admin is generated, admins
+        # must be notified. Setting the flag will make the
+        # case show up in the admin's view.
+        case.admin_informed = True
+        case.save()
+        communication.notify_admin(req, msg, sender)
+    elif sender == 'finder':
+        communication.notify_owner(req, msg)
+    elif sender == 'owner':
+        communication.notify_finder(req, msg)
+    elif sender == 'admin':
+        communication.notify_finder(req, msg)
+        communication.notify_owner(req, msg)
+
+    return msg
+
+
+def case_finder(req, ident):
+    case = get_object_or_404(models.Case, identifier=ident)
 
     if req.POST and req.POST['message']:
-        msg = models.CaseMessage()
-        msg.case = case
-        msg.from_owner = False
-        msg.message = req.POST['message']
-        msg.save()
+        for_admin = req.POST['action'] == 'escalate'
 
-        communication.notify_owner(req, msg)
+        msg = add_message(req, case, 'finder', for_admin)
         return redirect('case_finder', ident=case.identifier)
 
     return render(req, 'messaging_finder.html', case_info(case))
 
 
 def case_owner(req, pk):
-    case = models.Case.objects.get(pk=pk)
-    if not case.model_owner == req.user:
-        # TODO: reject request; owner view does not match
-        # current user
-        pass
+    case = get_object_or_404(models.Case, pk=pk, model_owner=req.user)
 
     if req.POST and req.POST['message']:
-        msg = models.CaseMessage()
-        msg.case = case
-        msg.from_owner = True
-        msg.message = req.POST['message']
-        msg.save()
+        for_admin = req.POST['action'] == 'escalate'
+        msg = add_message(req, case, 'owner', for_admin)
 
-        communication.notify_finder(req, msg)
 
         return redirect('case_owner', pk=case.pk)
 
     return render(req, 'messaging_owner.html', case_info(case))
+
+
+@staff_member_required
+def mod_case(req, pk):
+    case = get_object_or_404(models.Case, pk=pk, admin_informed=True)
+
+    if req.POST and req.POST['message']:
+        msg = add_message(req, case, 'admin')
+        return redirect('case_owner', pk=case.pk)
+
+    info = case_info(case)
+
+    return render(req, 'messaging_admin.html', info)
+
+
+@staff_member_required
+def mod_overview(req):
+
+    cases = models.Case.objects.filter(admin_informed=True) #.order_by('-messages__timestamp').distinct()
+
+    return render(req, 'mod_overview.html', {'cases':cases})
 
 
 def index(req):

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ block.super }}{% trans "Edit your profile" %}{% endblock %}
+{% block content-header %}{% trans "Moderator overview" %}{% endblock %}
+{% block content-main %}
+    {% for case in cases %}
+        <div class="row">
+            <div class="col-md-4">
+                <b>
+                    <a href="{% url 'mod_case' case.pk %}">
+                        {{case.timestamp}}
+                    </a>
+                </b>
+            </div>
+            <div class="col-md-3">
+                {{ case.model_owner.first_name }}
+                {{ case.model_owner.last_name }}
+                ({{ case.model_owner.username }})
+            </div>
+            <div class="col-md-5">
+                <span class="msg-text">{{case.messages.last.message|linebreaksbr}}</span>
+                <br>
+                {% blocktrans with sender=case.messages.last.sender timestamp=case.messages.last.timestamp%}
+                (Sent by the {{sender}} on {{timestamp}})
+                {% endblocktrans %}
+            </div>
+        </div>
+    {% empty %}
+        {% trans 'No cases requiring moderator attention right now' %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans %}ModelReg: A case requires your attention{% endblocktrans %}

@@ -49,6 +49,14 @@
                                         {% trans "About" %}
                                     </a>
                                 </li>
+                                {% if user.is_staff %}
+                                <li>
+                                    <a href="{% url 'mod_overview' %}" target="_blank">
+                                        <i class="fa user-circle"></i>
+                                        {% trans "Moderator" %}
+                                    </a>
+                                </li>
+                                {% endif %}
                             </ul>
                             {% include "personal_nav.html" %}
                         </div><!--/.nav-collapse -->

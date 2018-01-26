@@ -1,0 +1,25 @@
+{% load i18n %}
+{% if msg.sender == user or not msg.for_admin %}
+<div class="card case-message bubble {{ msg.sender }} {% if msg.sender == user %}right{%else%}left{%endif%} {% if msg.for_admin %}for-admin{%endif%}">
+    <div class="card-block">
+        <h4 class="card-title">
+            {% if msg.sender == user %}
+                {% trans 'You' %}
+            {%else%}
+                {% trans msg.sender %}
+            {%endif%}
+            <span class="timestamp">{{msg.timestamp}}</span>
+        </h4>
+    </div>
+    <div class="card-block">
+        <p class="card-text">{{msg.message|linebreaksbr}}</p>
+        {% if msg.for_admin %}
+        <p class="note-admin-only">
+        {% blocktrans %}
+        This message is visible for administrators only. The other party cannot see this.
+        {% endblocktrans %}
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
