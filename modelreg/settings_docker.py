@@ -92,3 +92,5 @@ if os.getenv('EMAIL_HOST', False):
 
 SYSTEM_EMAIL    = os.getenv('SYSTEM_EMAIL',    'modelreg@example.com')
 SYSTEM_OPERATOR = os.getenv('SYSTEM_OPERATOR', 'ModelReg Team')
+DEFAULT_FROM_EMAIL = SYSTEM_EMAIL
+SERVER_EMAIL = SYSTEM_EMAIL
