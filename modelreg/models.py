@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
 
-    user  = models.OneToOneField(User, related_name='profile')
+    user  = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     address = models.TextField()
     phone   = models.CharField(max_length=50)
@@ -27,7 +27,7 @@ def make_identifier(length=15):
 
 class PublicProfile(models.Model):
 
-    user        = models.OneToOneField(User, related_name='public_profile')
+    user        = models.OneToOneField(User, related_name='public_profile', on_delete=models.CASCADE)
     public_info = models.TextField()
     identifier  = models.CharField(max_length=15, default=make_identifier, blank=True)
     auth        = models.CharField(max_length=15, default=make_identifier, blank=True)
@@ -48,7 +48,7 @@ class Case(models.Model):
 
     damage_type  = models.CharField(max_length=20, choices=TYPE_CHOICES, default='no_damage')
 
-    model_owner    = models.ForeignKey(User, related_name='cases')
+    model_owner    = models.ForeignKey(User, related_name='cases', on_delete=models.CASCADE)
     identifier     = models.CharField(max_length=15, default=make_identifier, blank=True)
     timestamp      = models.DateTimeField(auto_now_add=True)
 
@@ -118,7 +118,7 @@ class CaseMessage(models.Model):
         ('owner', _('Owner')),
     )
 
-    case       = models.ForeignKey(Case, related_name = 'messages')
+    case       = models.ForeignKey(Case, related_name = 'messages', on_delete=models.CASCADE)
     timestamp  = models.DateTimeField(auto_now_add=True)
     for_admin  = models.BooleanField(default=False)
     message    = models.TextField()
